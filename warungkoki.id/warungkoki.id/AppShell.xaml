@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:warungkoki.id.Views" 
+       xmlns:tab="clr-namespace:Sharpnado.Tabs;assembly=Sharpnado.Tabs" xmlns:c="clr-namespace:warungkoki.id"
+       x:Name="Root"
+       Title="warungkoki.id"
+       BackgroundColor="{StaticResource Primary}"
+       x:Class="warungkoki.id.AppShell">
+
+    <!--
+        The overall app visual hierarchy is defined here, along with navigation.
+    
+        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
+    -->
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#57ba7d" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="#603813"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <c:TodoTabBar Style="{StaticResource BaseStyle}">
+        <c:TodoTabBar.LargeTab>
+            <Tab Title="Scan" Icon="scann_ic.png">
+                <ShellContent  Route="ScanPage" ContentTemplate="{DataTemplate local:HomePageNew}" />
+            </Tab>
+        </c:TodoTabBar.LargeTab>
+        <Tab Title="Home" Icon="homepage_ic.png">
+        <ShellContent  Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
+        </Tab>
+        <Tab Title="blank" >
+            <ShellContent  Route="ScanPage" ContentTemplate="{DataTemplate local:HomePageNew}" />
+        </Tab>
+        <Tab Title="Keranjang" Icon="cart_ic.png">
+            <ShellContent Route="CartPage" ContentTemplate="{DataTemplate local:TransactionPage}" />
+        </Tab>
+        <Tab Title="Transaksi" Icon="transaction_ic.png" >
+        <ShellContent Route="TransactionPage" ContentTemplate="{DataTemplate local:HomePageNew}" />
+        </Tab>
+        <Tab Title="Favorit" Icon="star_ic.png">     
+        <ShellContent  Route="FavPage" ContentTemplate="{DataTemplate local:TransactionPageNew}" />
+        </Tab>
+    </c:TodoTabBar>
+
+    <TabBar>
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    </TabBar>
+
+</Shell>

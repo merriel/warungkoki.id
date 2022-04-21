@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="warungkoki.id.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             BackgroundColor="#fbb03b">
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand">
+            <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+                <Image Source="koki_logo.png" HorizontalOptions="CenterAndExpand" HeightRequest="150"/>
+                <Entry Placeholder="Email" Text="{Binding Value, Mode=TwoWay}" FontFamily="OpenSansRegular" />
+                <Entry Placeholder="Password" IsPassword="True" FontFamily="OpenSansRegular" />
+                <Button VerticalOptions="Center" BackgroundColor="White" Text="Login" FontFamily="OpenSansSemibold"
+                    TextColor="DarkSlateGray" Command="{Binding LoginCommand}" CornerRadius="20"/>
+                <BoxView HeightRequest="1" Color="LightGray" IsVisible="true"/>
+                <Button VerticalOptions="Center" BackgroundColor="White" Text="Login with Google" FontFamily="OpenSansSemibold" 
+                    TextColor="DarkSlateGray" ImageSource="google_ic" CornerRadius="20" Command="{Binding LoginGoogleCommand}"/>
+            </StackLayout>
+            <Label Text="WarungKoki v0.1" HeightRequest="20" TextColor="WhiteSmoke" FontFamily="OpenSansLightItalic" VerticalTextAlignment="Center"
+                   VerticalOptions="End" HorizontalOptions="Center" HorizontalTextAlignment="End" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
