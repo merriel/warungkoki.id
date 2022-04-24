@@ -9,6 +9,7 @@ namespace warungkoki.id
     public partial class App : Application
     {
         public static string Username;
+        public static string Email;
         public App()
         {
             InitializeComponent();

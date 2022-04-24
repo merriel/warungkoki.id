@@ -13,8 +13,7 @@ namespace warungkoki.id
             InitializeComponent();
             if (Application.Current.Properties.ContainsKey("Username") && Application.Current.Properties["Username"] != null)
             {
-                //App.ID = Application.Current.Properties["ID"].ToString();
-             //   App.Username = Application.Current.Properties["Username"].ToString();
+               
 
             }
             else

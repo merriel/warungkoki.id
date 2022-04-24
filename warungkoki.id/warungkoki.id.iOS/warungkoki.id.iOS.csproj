@@ -135,6 +135,9 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
+    <PackageReference Include="Plugin.GoogleClient">
+      <Version>2.1.12</Version>
+    </PackageReference>
     <PackageReference Include="Plugin.Toast">
       <Version>2.2.0</Version>
     </PackageReference>
@@ -231,5 +234,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\scann_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_b.png" />
   </ItemGroup>
 </Project>

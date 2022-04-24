@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "601804528259",
+    "project_id": "warungkoki-347805",
+    "storage_bucket": "warungkoki-347805.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601804528259:android:025e128efbca10211459b6",
+        "android_client_info": {
+          "package_name": "com.companyname.warungkoki.id"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "601804528259-sbu5kn43c496oa0j95jfaprvp7aupb1c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companyname.warungkoki.id",
+            "certificate_hash": "309243e2f41366741e940a892c00a61267790cea"
+          }
+        },
+        {
+          "client_id": "601804528259-mc4brdrc3piltsr6gbdulni8bbulnr5p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKC-_E1Uswj3jB6zeNrYXrD7b_o8JBdvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "601804528259-mc4brdrc3piltsr6gbdulni8bbulnr5p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "601804528259-koje6aepg3gru5rlbnl6r7il7h6m95ec.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.companyname.warungkoki.id"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

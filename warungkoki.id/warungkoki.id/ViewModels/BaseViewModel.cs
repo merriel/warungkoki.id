@@ -9,8 +9,10 @@ using Xamarin.Forms;
 
 namespace warungkoki.id.ViewModels
 {
+
     public class BaseViewModel : INotifyPropertyChanged
     {
+
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         bool isBusy = false;
@@ -54,7 +56,6 @@ namespace warungkoki.id.ViewModels
             OnPropertyChanged(propertyName);
             return true;
         }
-
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")

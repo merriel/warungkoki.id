@@ -39,13 +39,13 @@
             </Tab>
         </c:TodoTabBar.LargeTab>
         <Tab Title="Home" Icon="homepage_ic.png">
-        <ShellContent  Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
-        </Tab>
-        <Tab Title="blank" >
-            <ShellContent  Route="ScanPage" ContentTemplate="{DataTemplate local:HomePageNew}" />
+        <ShellContent  Route="HomePage" ContentTemplate="{DataTemplate local:HomePageNew}" />
         </Tab>
         <Tab Title="Keranjang" Icon="cart_ic.png">
-            <ShellContent Route="CartPage" ContentTemplate="{DataTemplate local:TransactionPage}" />
+            <ShellContent  Route="CartPage" ContentTemplate="{DataTemplate local:TransactionPageNew}" />
+        </Tab>
+        <Tab Title="Scan" >
+            <ShellContent Route="ScanPage" ContentTemplate="{DataTemplate local:TransactionPage}" />
         </Tab>
         <Tab Title="Transaksi" Icon="transaction_ic.png" >
         <ShellContent Route="TransactionPage" ContentTemplate="{DataTemplate local:HomePageNew}" />

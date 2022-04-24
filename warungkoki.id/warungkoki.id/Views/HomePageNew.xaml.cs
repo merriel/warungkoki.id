@@ -24,7 +24,7 @@ namespace warungkoki.id.Views
         { var rowCount = Math.Ceiling(itemCount / columnCount); return rowCount * rowHeight; }
         private async void picker_Clicked(object sender, EventArgs e)
         {
-            var page = new SelectTokoPage();
+            var page = new SelectTokoPage(new TokoGroupViewModel());
 
             await PopupNavigation.Instance.PushAsync(page);
         }

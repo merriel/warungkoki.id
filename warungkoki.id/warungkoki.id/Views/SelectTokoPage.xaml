@@ -2,30 +2,78 @@
 <rg:PopupPage
     x:Class="warungkoki.id.Views.SelectTokoPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:vm="clr-namespace:warungkoki.id.ViewModels"
+    x:Name="currentPage"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:rg="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" >
-    <Grid Margin="20">
 
-        <StackLayout x:Name="hotelStack" Padding="1,0,1,0" >
-            <ListView  x:Name="navigationDrawerList" RowHeight="75" GroupShortNameBinding="{Binding ShortName}" IsGroupingEnabled="true">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding Name}"  TextColor="#005569"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.GroupHeaderTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="5,5,5,5" BackgroundColor="#E2F5F9">
-                                <Image Source="{Binding Icon}" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
-                                <Label Text="{Binding TitleWithItemCount}" FontSize="Medium" VerticalOptions="Center" TextColor="White"/>
-                                <Button Image="{Binding StateIcon}" BackgroundColor="Transparent" BorderColor="Transparent" BorderWidth="0" Clicked="HeaderTapped" CommandParameter="{Binding .}"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.GroupHeaderTemplate>
-            </ListView>
-
-        </StackLayout>
+    <rg:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </rg:PopupPage.Animation>
+    <Grid Margin="10" BackgroundColor="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <SearchBar x:Name="searchBar" Grid.Row="0" Margin="10"
+                   Placeholder="Cari Lokasi"/>
+        <ListView x:Name="listView" IsGroupingEnabled="True" 
+                  IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                    ItemsSource="{Binding Items}"
+                    RefreshCommand="{Binding LoadHotelsCommand}" Grid.Row="1" Margin="20,0,20,20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions> 
+                            <Label
+                                            VerticalOptions="Center"
+                                            FontAttributes="Bold"
+                                            FontSize="13"
+                                            Text="{Binding AlamatName}"
+                                            TextColor="Black"
+                                            VerticalTextAlignment="Center"
+                                            Grid.Row="0"/>
+                            <Label
+                                            VerticalOptions="StartAndExpand"
+                                            FontAttributes="None"
+                                            FontSize="10"
+                                            Text="{Binding AlamatLengkap}"
+                                            TextColor="Black"
+                                            VerticalTextAlignment="Center" 
+                                            Grid.Row="1"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Label FontAttributes="Bold" FontSize="Small" Text="{Binding Name}" TextColor="Gray" VerticalTextAlignment="Center" />
+                            <Image x:Name="ImgA" Source="{Binding StateIcon}" Margin="0,0,5,0" HeightRequest="20" WidthRequest="20" HorizontalOptions="End" />
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference currentPage}, Path=BindingContext.RefreshItemsCommand}" NumberOfTapsRequired="1" CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+        </ListView>
     </Grid>
 </rg:PopupPage>

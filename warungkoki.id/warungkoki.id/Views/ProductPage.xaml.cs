@@ -25,7 +25,7 @@ namespace warungkoki.id.Views
         }
         private async void picker_Clicked(object sender, EventArgs e)
         {
-            var page = new SelectTokoPage();
+            var page = new SelectTokoPage(new TokoGroupViewModel());
 
             await PopupNavigation.Instance.PushAsync(page);
         }

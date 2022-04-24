@@ -7,6 +7,7 @@ using warungkoki.id.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace warungkoki.id.Views
 {
@@ -17,6 +18,12 @@ namespace warungkoki.id.Views
             InitializeComponent();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetTitleIconImageSource(this, "titlebar.jpeg");
+            if (Application.Current.Properties.ContainsKey("Username") && Application.Current.Properties["Username"] != null)
+            {
+                username.Text = "Hello, "+ Application.Current.Properties["Username"].ToString();
+
+            }
+            BindingContext = new HomeViewModel();
         }
         void Handle_PositionSelected(object sender, PositionSelectedEventArgs e)
         {
@@ -25,7 +32,7 @@ namespace warungkoki.id.Views
         }
         private async void picker_Clicked(object sender, EventArgs e)
         {
-            var page = new SelectTokoPage();
+            var page = new SelectTokoPage(new TokoGroupViewModel());
 
             await PopupNavigation.Instance.PushAsync(page);
         }
