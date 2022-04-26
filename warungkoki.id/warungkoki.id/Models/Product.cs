@@ -21,6 +21,8 @@ namespace warungkoki.id.Models
         public string active { get; set; }
         public string prod_name{ get; set; }
         public string wilayah_name { get; set; }
+        public string alamat { get; set; }
+
         public string regency_name{ get; set; }
         public string prod_img { get; set; }
         public string uuid { get; set; }

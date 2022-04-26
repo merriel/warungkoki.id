@@ -1,0 +1,46 @@
+{
+	"name": "Warungkoki",
+	"short_name": "Warungkoki",
+	"start_url": "./",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#ffffff",
+	"orientation": "any",
+	"icons": [
+		{
+			"src": "/assets/icon/36x36.png",
+			"type": "image/png",
+			"sizes": "36x36"
+		},
+		{
+			"src": "/assets/icon/48x48.png",
+			"type": "image/png",
+			"sizes": "48x48"
+		},
+		{
+			"src": "/assets/icon/72x72.png",
+			"type": "image/png",
+			"sizes": "72x72"
+		},
+		{
+			"src": "/assets/icon/96x96.png",
+			"type": "image/png",
+			"sizes": "96x96"
+		},
+		{
+			"src": "/assets/icon/144x144.png",
+			"type": "image/png",
+			"sizes": "144x144"
+		},
+		{
+			"src": "/assets/icon/192x192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/assets/icon/512x512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	]
+}

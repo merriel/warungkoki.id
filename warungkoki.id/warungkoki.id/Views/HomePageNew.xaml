@@ -29,9 +29,6 @@
         <ToolbarItem Text="Logout" Order="Secondary" />
     </ContentPage.ToolbarItems>
 
-    <ContentPage.BindingContext>
-        <vm:HomeViewModel />
-    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Accent">#ffffff</Color>
@@ -46,16 +43,21 @@
                     <RowDefinition Height="40" />
                     <RowDefinition Height="90" />
                     <RowDefinition Height="180" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <BoxView CornerRadius="20" Grid.Row="0" HeightRequest="50" Margin="0,0,0,0" BackgroundColor="#57ba7d"/>
                 <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand" Margin="20,15,20,0" HorizontalOptions="Fill">
-                    <Label Text="Hello, User" FontSize="Title" FontFamily="OpenSansExtraBold" TextColor="DarkSlateGray" FontAttributes="Bold" />
+                    <Label Text="Hello, User" x:Name="userr" FontSize="Title" FontFamily="OpenSansBold" TextColor="DarkSlateGray" FontAttributes="Bold" />
                 </StackLayout>
-                <StackLayout Grid.Row="2" HeightRequest="40"  VerticalOptions="FillAndExpand" Margin="15,10,15,0" HorizontalOptions="Fill">
-                    <Frame CornerRadius="20" HeightRequest="30" Padding="5" BackgroundColor="#f3fcd3" >
-                        <Button x:Name="picker" Margin="5,-6,5,0" Text="Toko Pilihanmu" BackgroundColor="Transparent" HorizontalOptions="Start"
-                           FontSize="Small" FontFamily="OpenSansLight" TextColor="DarkSlateGray" Clicked="picker_Clicked"/>
+                <StackLayout Grid.Row="2" HeightRequest="40"  VerticalOptions="FillAndExpand"  Margin="15,10,15,0" HorizontalOptions="Fill">
+                    <Frame CornerRadius="20" HeightRequest="30" Padding="5" BackgroundColor="#f3fcd3">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="map_ic.png" HorizontalOptions="Start" Margin="5"/>
+                            <Label x:Name="toko" Text="Toko Pilihanmu" FontSize="10" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" Padding="5" Margin="5,0,0,0"/> 
+                            <Button x:Name="picker"  WidthRequest="10" ImageSource="arrow_down.png" Padding="5" BackgroundColor="Transparent" 
+                                    HorizontalOptions="End"
+                           FontSize="Small" FontFamily="OpenSansLight" TextColor="DarkSlateGray" Clicked="picker_Clicked" Margin="5, 5,10,5"/>
+                        </StackLayout>
                     </Frame>
                 </StackLayout>
 
@@ -111,7 +113,9 @@
                 <StackLayout Grid.Row="5" x:Name="flvContainer">
                 <flv:FlowListView SeparatorVisibility="None" HasUnevenRows="true" 
 			FlowItemTappedCommand="{Binding ItemTappedCommand}" FlowColumnCount="2" Margin="15,0,15,0"
-			FlowColumnMinWidth="110" FlowItemsSource="{Binding MyListSource}">
+			FlowColumnMinWidth="110" FlowItemsSource="{Binding ListProduct}" 
+                                 VerticalScrollBarVisibility="Never" FlowLastTappedItem = "{Binding SelectedItem}"
+ >
 
                     <flv:FlowListView.FlowColumnTemplate>
                         <DataTemplate>
@@ -123,14 +127,16 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Frame >
+                                <Frame Margin="5" CornerRadius="10">
                                     <StackLayout Orientation="Vertical">
                                         <ffimageloading:CachedImage HeightRequest="150" Aspect="AspectFill" DownsampleToViewSize = "true"
-							LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" 
-							Source="{Binding imageUrl}" />
-                                        <Label Text="{Binding Text}" TextColor="DarkSlateGray" FontFamily="OpenSansSemibold" FontSize="Medium"/>
-                                        <Label Text="{Binding Description}" TextColor="DarkSlateGray" FontFamily="OpenSansRegular" FontSize="Caption"/>
-                                    </StackLayout>
+							LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png"
+							Source="{Binding img}" Margin="-20, -20,-20,0"/>
+                                            <Label Text="{Binding prod_name}" TextColor="DarkSlateGray" FontFamily="OpenSansSemibold" FontAttributes="Bold" FontSize="Small"/>
+                                        <Label Text="{Binding wilayah_name}" TextColor="DarkSlateGray" FontFamily="OpenSansRegular" FontSize="Micro"/>
+                                            <BoxView HeightRequest="1" Color="LightGray" IsVisible="true" />
+                                            <Label Text="{Binding harga_act, StringFormat='{0:#,0}'}" TextColor="PaleVioletRed" FontFamily="OpenSansRegular" FontSize="Body"/>
+                                        </StackLayout>
                                 </Frame>
 
                             </Grid>

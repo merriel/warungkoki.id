@@ -31,10 +31,6 @@
         <ToolbarItem Text="Logout" Order="Secondary" />
     </ContentPage.ToolbarItems>
 
-    <ContentPage.BindingContext>
-        <vm:HomeViewModel />
-    </ContentPage.BindingContext>
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Accent">#ffffff</Color>

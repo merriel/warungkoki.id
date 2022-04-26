@@ -118,7 +118,9 @@ namespace warungkoki.id.ViewModels
                     foreach (User item in json)
                     {
                         var valid_email = item.email;
-
+                        App.Username = item.name;
+                        Debug.WriteLine("JSON = " + result);
+                        Application.Current.Properties["Username"] = item.name;
                         //if result insert into kehadiran table then open take picture page, else show exception / alertdialog
                         //for now return from API qrcode = null, _POST on PHP not working
                         await Shell.Current.GoToAsync($"//{nameof(TransactionPage)}");

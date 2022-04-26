@@ -14,7 +14,7 @@ namespace warungkoki.id.Models
         public string ktp { get; set; }
         public string name { get; set; }
         public string jenkel { get; set; }
-        public System.DateTime tanggal_lahir { get; set; }
+       /// public System.DateTime tanggal_lahir { get; set; }
         public string no_hp{ get; set; }
         public string alamat { get; set; }
         private string mail;

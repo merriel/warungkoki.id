@@ -26,6 +26,19 @@ namespace warungkoki.id.ViewModels
             get => items;
             set => SetProperty(ref items, value);
         }
+        private string _selected;
+        public string Selected
+        {
+            get { return _selected; }
+            set
+            {
+                _selected = value;
+                if (_selected != null)
+                {
+                    OnPropertyChanged();
+                }
+            }
+        }
         public Command LoadHotelsCommand
         {
             get;

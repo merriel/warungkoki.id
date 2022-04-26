@@ -1,4 +1,5 @@
 ﻿using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using warungkoki.id.Models;
 using warungkoki.id.ViewModels;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace warungkoki.id.Views
@@ -43,6 +45,11 @@ namespace warungkoki.id.Views
                 Debug.WriteLine(Ex.Message);
             }
         }
-
+        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null) return;
+            Debug.WriteLine(e.SelectedItem.ToString());
+            await PopupNavigation.Instance.PopAsync();
+        }
     }
 }

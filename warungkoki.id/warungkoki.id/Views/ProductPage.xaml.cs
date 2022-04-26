@@ -3,6 +3,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using warungkoki.id.Models;
 using warungkoki.id.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -12,22 +13,20 @@ namespace warungkoki.id.Views
 {
     public partial class ProductPage : ContentPage
     {
-        public ProductPage()
+        Product prod;
+        public ProductPage(Product product)
         {
+            this.prod = product;
             InitializeComponent();
+            BindingContext = new ProductViewModel(prod);
+            //image.SetBinding(sourceProperty)
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            Xamarin.Forms.NavigationPage.SetTitleIconImageSource(this, "titlebar.jpeg");
         }
         void Handle_PositionSelected(object sender, PositionSelectedEventArgs e)
         {
             var control = (CarouselViewControl)sender;
             Debug.WriteLine(control.SelectedItem);
         }
-        private async void picker_Clicked(object sender, EventArgs e)
-        {
-            var page = new SelectTokoPage(new TokoGroupViewModel());
 
-            await PopupNavigation.Instance.PushAsync(page);
-        }
     }
 }

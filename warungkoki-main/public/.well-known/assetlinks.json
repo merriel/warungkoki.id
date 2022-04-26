@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "com.iolosmartapps.myapplication",
+               "sha256_cert_fingerprints": ["4F:BC:E9:7A:52:CE:AD:C6:72:B5:B9:CC:E3:B7:BB:23:F4:EE:A7:DF:B8:E6:87:11:3A:47:BA:00:F0:9A:9E:82"] }
+}]

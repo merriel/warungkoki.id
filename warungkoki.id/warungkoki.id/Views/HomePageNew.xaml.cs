@@ -16,8 +16,14 @@ namespace warungkoki.id.Views
         public HomePageNew()
         {
             InitializeComponent();
-            BindingContext = new HomeViewModel();
-            flvContainer.HeightRequest = GetGridContainerHeight(5, 2, 200);
+            BindingContext = new HomeViewModel(Navigation);
+            if (Application.Current.Properties.ContainsKey("Username") && Application.Current.Properties["Username"] != null)
+            {
+
+                userr.Text = "Hello, " + Application.Current.Properties["Username"].ToString();
+            }
+           
+            //flvContainer.HeightRequest = GetGridContainerHeight(5, 2, 200);
         }
 
         public static double GetGridContainerHeight(double itemCount, double columnCount, int rowHeight) 

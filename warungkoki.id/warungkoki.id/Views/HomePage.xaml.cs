@@ -23,7 +23,7 @@ namespace warungkoki.id.Views
                 username.Text = "Hello, "+ Application.Current.Properties["Username"].ToString();
 
             }
-            BindingContext = new HomeViewModel();
+            BindingContext = new HomeViewModel(Navigation);
         }
         void Handle_PositionSelected(object sender, PositionSelectedEventArgs e)
         {

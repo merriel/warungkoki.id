@@ -241,4 +241,25 @@
   <ItemGroup>
     <BundleResource Include="Resources\arrow_b.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\map_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\share_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fav_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_toko.png" />
+  </ItemGroup>
 </Project>

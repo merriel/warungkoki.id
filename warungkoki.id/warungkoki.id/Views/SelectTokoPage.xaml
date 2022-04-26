@@ -31,7 +31,8 @@ xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;
                    Placeholder="Cari Lokasi"/>
         <ListView x:Name="listView" IsGroupingEnabled="True" 
                   IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                    ItemsSource="{Binding Items}"
+                    ItemsSource="{Binding Items}" SelectedItem="{Binding Selected}"
+          ItemSelected="OnItemSelected"
                     RefreshCommand="{Binding LoadHotelsCommand}" Grid.Row="1" Margin="20,0,20,20">
             <ListView.ItemTemplate>
                 <DataTemplate>

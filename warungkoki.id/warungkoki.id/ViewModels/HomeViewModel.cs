@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using warungkoki.id.Models;
+using warungkoki.id.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -19,30 +20,32 @@ namespace warungkoki.id.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         ObservableCollection<Banner> ListBanner = new ObservableCollection<Banner>();
-        public HomeViewModel()
+        public HomeViewModel(INavigation navigation)
         {
-
+            this.Navigation = navigation;
             GetBannersAsync();
-            MyListSource = new ObservableCollection<Item>()
-            { new Item { Text = "Item1", Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua", imageUrl = "item1.jpeg"},
-             new Item { Text = "Item2", Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua", imageUrl = "item2.jpeg"},
-            new Item { Text = "Item3", Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua", imageUrl = "item3.jpeg"},
-            new Item { Text = "Item4", Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua", imageUrl = "item4.jpeg"},
-            new Item { Text = "Item5", Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua", imageUrl = "item5.jpeg"}
-            };
+            GetProductsAsync("31");
+            ItemTappedCommand = new Command(async () => await OnTapClicked());
 
             PositionSelectedCommand = new Command<PositionSelectedEventArgs>((e) =>
             {
-                Debug.WriteLine("Position " + e.NewValue + " selected.");
-                Debug.Write(this.SelectedItem);
+               // Debug.WriteLine("Position " + e.NewValue + " selected.");
+               // Debug.Write(this.SelectedItem);
             });
 
             ScrolledCommand = new Command<CarouselView.FormsPlugin.Abstractions.ScrolledEventArgs>((e) =>
             {
-                Debug.WriteLine("Scrolled to " + e.NewValue + " percent.");
-                Debug.WriteLine("Direction = " + e.Direction);
+              //  Debug.WriteLine("Scrolled to " + e.NewValue + " percent.");
+              //  Debug.WriteLine("Direction = " + e.Direction);
             });
         }
+
+        private async Task OnTapClicked()
+        {
+            await Navigation.PushAsync(new ProductPage(SelectedItem));
+        }
+
+        public Command ItemTappedCommand { get; }
 
         ObservableCollection<Banner> banners_source;
         public ObservableCollection<Banner> BannersSource
@@ -72,8 +75,22 @@ namespace warungkoki.id.ViewModels
             }
         }
 
-        object _selectedItem;
-        public object SelectedItem
+        private ObservableCollection<Product> listproduct;
+        public ObservableCollection<Product> ListProduct
+        {
+            set
+            {
+                listproduct = value;
+                OnPropertyChanged("ListProduct");
+            }
+            get
+            {
+                return listproduct;
+            }
+        }
+
+        Product _selectedItem;
+        public Product SelectedItem
         {
             set
             {
@@ -108,8 +125,8 @@ namespace warungkoki.id.ViewModels
                 {
                     string result = response.Substring(1);
                     var json = JsonConvert.DeserializeObject<List<Banner>>(result);
-                    System.Diagnostics.Debug.WriteLine("HASIL:");
-                    System.Diagnostics.Debug.WriteLine(result);
+                    //System.Diagnostics.Debug.WriteLine("HASIL:");
+                    //System.Diagnostics.Debug.WriteLine(result);
                     BannersSource = new ObservableCollection<Banner>();
            
                     foreach (Banner item in json)
@@ -133,5 +150,50 @@ namespace warungkoki.id.ViewModels
                 System.Diagnostics.Debug.WriteLine(e);
             }
         }
+        public async Task GetProductsAsync(string wilayah_id)
+        {
+            try
+            {
+
+                var myHttpClient = new HttpClient();
+                Uri uri = new Uri("http://elcapersada.com/warungkoki/android/get_listproduct.php?wilayah_id=31");
+                var response = await myHttpClient.GetStringAsync(uri);
+
+                if (response != "[]")
+                {
+                    string result = response.Substring(1);
+                    var json = JsonConvert.DeserializeObject<List<Product>>(result);
+                    System.Diagnostics.Debug.WriteLine("HASIL:");
+                    System.Diagnostics.Debug.WriteLine(result);
+                    ListProduct = new ObservableCollection<Product>();
+
+                    foreach (Product item in json)
+                    {
+                        ListProduct.Add(new Product { id = item.id, user_id = item.user_id, 
+                            kategori_id= item.kategori_id, product_id = item.product_id, code_id = item.code_id,
+                            img = "http://elcapersada.com/warungkoki/android/img_post/" +item.img, type= item.type, jenis = item.jenis, banyaknya = item.banyaknya,
+                            desc = item.desc, min_qty = item.min_qty, judul_promo = item.judul_promo,
+                        harga_act = item.harga_act, harga_crt= item.harga_crt, active = item.active, 
+                        prod_name = item.prod_name, wilayah_name = "Barang ini tersedia dan bisa anda dapatkan di "+ item.wilayah_name, regency_name = item.regency_name,
+                        prod_img = "http://elcapersada.com/warungkoki/android/img_post/" + item.prod_img, uuid = item.uuid, alamat = item.alamat});
+                    }
+                    myHttpClient.Dispose();
+                }
+                else
+                {
+                    //await Application.Current.MainPage.DisplayAlert(null, "Data not found", "ok");
+                    System.Diagnostics.Debug.WriteLine("KOSONG;");
+                    System.Diagnostics.Debug.WriteLine(response);
+                }
+                myHttpClient.Dispose();
+            }
+
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("CAUGHT EXCEPTION:");
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+        }
+        public INavigation Navigation { get; set; }
     }
 }
