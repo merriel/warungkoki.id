@@ -11,10 +11,9 @@ namespace warungkoki.id
         public AppShell()
         {
             InitializeComponent();
-            if (!Application.Current.Properties.ContainsKey("Username") && Application.Current.Properties["Username"] == null)
-            {
+           
                 Navigation.PushAsync(new LoginPage());
-            }
+            
         
         }
 

@@ -10,6 +10,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using warungkoki.id.Models;
+using warungkoki.id.Services;
 using warungkoki.id.Views;
 using Xamarin.Auth;
 using Xamarin.Forms;
@@ -43,10 +44,132 @@ namespace warungkoki.id.ViewModels
 
       private async void OnLoginGoogleClicked(object obj)
         {
-           await LoginGoogleAsync();
+            OAuth2Authenticator authenticator
+                  = new Xamarin.Auth.OAuth2Authenticator
+                  (
+                      clientId:
+                          new Func<string>
+                             (
+                                 () =>
+                                 {
+                                     string retval_client_id = "oops something is wrong!";
 
+                                    // some people are sending the same AppID for google and other providers
+                                    // not sure, but google (and others) might check AppID for Native/Installed apps
+                                    // Android and iOS against UserAgent in request from 
+                                    // CustomTabs and SFSafariViewContorller
+                                    // TODO: send deliberately wrong AppID and note behaviour for the future
+                                    // fitbit does not care - server side setup is quite liberal
+                                    switch (Xamarin.Forms.Device.RuntimePlatform)
+                                     {
+                                         case "Android":
+                                             retval_client_id = "601804528259-sbu5kn43c496oa0j95jfaprvp7aupb1c.apps.googleusercontent.com";
+                                             break;
+                                         case "iOS":
+                                             retval_client_id = "601804528259-koje6aepg3gru5rlbnl6r7il7h6m95ec.apps.googleusercontent.com";
+                                             break;
+                                     }
+                                     return retval_client_id;
+                                 }
+                            ).Invoke(),
+                     clientSecret: null,   // null or ""
+                     authorizeUrl: new Uri("http://www.whatsmyua.info/"), // new Uri("https://accounts.google.com/o/oauth2/v2/auth"),
+                     //Uri("https://accounts.google.com/o/oauth2/auth"),
+                     accessTokenUrl: new Uri("https://www.googleapis.com/oauth2/v4/token"),
+                     redirectUrl:
+                         new Func<Uri>
+                             (
+                                 () =>
+                                 {
 
+                                     string uri = null;
+
+                                    // some people are sending the same AppID for google and other providers
+                                    // not sure, but google (and others) might check AppID for Native/Installed apps
+                                    // Android and iOS against UserAgent in request from 
+                                    // CustomTabs and SFSafariViewContorller
+                                    // TODO: send deliberately wrong AppID and note behaviour for the future
+                                    // fitbit does not care - server side setup is quite liberal
+                                    switch (Xamarin.Forms.Device.RuntimePlatform)
+                                     {
+                                         case "Android":
+                                             uri =
+                                                "com.xamarin.traditional.standard.samples.oauth.providers.android:/oauth2redirect"
+                                                //"com.googleusercontent.apps.1093596514437-d3rpjj7clslhdg3uv365qpodsl5tq4fn:/oauth2redirect"
+                                                ;
+                                             break;
+                                         case "iOS":
+                                             uri =
+                                                "com.xamarin.traditional.standard.samples.oauth.providers.ios:/oauth2redirect"
+                                                //"com.googleusercontent.apps.1093596514437-cajdhnien8cpenof8rrdlphdrboo56jh:/oauth2redirect"
+                                                ;
+                                             break;
+                                        
+                                     }
+
+                                     return new Uri(uri);
+                                 }
+                              ).Invoke(),
+                      scope:
+                                   //"profile"
+                                   "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/plus.login"
+                                   ,
+                      getUsernameAsync: null,
+                      isUsingNativeUI: true
+                  )
+                  {
+                      AllowCancel = true,
+                  };
+
+            authenticator.Completed +=
+                async (s, ea) =>
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    if (ea.Account != null && ea.Account.Properties != null)
+                    {
+                        sb.Append("Token = ").AppendLine($"{ea.Account.Properties["access_token"]}");
+                    }
+                    else
+                    {
+                        sb.Append("Not authenticated ").AppendLine($"Account.Properties does not exist");
+                    }
+
+                   await Application.Current.MainPage.DisplayAlert
+                            (
+                                "Authentication Results",
+                                sb.ToString(),
+                                "OK"
+                            );
+
+                    return;
+                };
+
+            authenticator.Error +=
+                async (s, ea) =>
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("Error = ").AppendLine($"{ea.Message}");
+
+                    await Application.Current.MainPage.DisplayAlert
+                            (
+                                "Authentication Error",
+                                sb.ToString(),
+                                "OK"
+                            );
+                    return;
+                };
+
+            // after initialization (creation and event subscribing) exposing local object 
+            AuthenticationState.Authenticator = authenticator;
+
+            //PresentUILoginScreen(authenticator);
+
+            return;
         }
+
+
+
         OAuth2Authenticator Auth = null;
         async Task<TokenResponse> LoginGoogleAsync()
         {

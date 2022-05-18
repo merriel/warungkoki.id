@@ -35,7 +35,7 @@
     <c:TodoTabBar Style="{StaticResource BaseStyle}">
         <c:TodoTabBar.LargeTab>
             <Tab Title="Scan" Icon="scann_ic.png">
-                <ShellContent  Route="ScanPage" ContentTemplate="{DataTemplate local:HomePageNew}" />
+                <ShellContent  Route="ScanPage" ContentTemplate="{DataTemplate local:ScanPage}" />
             </Tab>
         </c:TodoTabBar.LargeTab>
         <Tab Title="Home" Icon="homepage_ic.png">
@@ -45,7 +45,7 @@
             <ShellContent  Route="CartPage" ContentTemplate="{DataTemplate local:TransactionPageNew}" />
         </Tab>
         <Tab Title="Scan" >
-            <ShellContent Route="ScanPage" ContentTemplate="{DataTemplate local:TransactionPage}" />
+            <ShellContent Route="ScanPage" ContentTemplate="{DataTemplate local:ScanPage}" />
         </Tab>
         <Tab Title="Transaksi" Icon="transaction_ic.png" >
         <ShellContent Route="TransactionPage" ContentTemplate="{DataTemplate local:HomePageNew}" />

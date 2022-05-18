@@ -27,7 +27,7 @@ namespace warungkoki.id.iOS
             Sharpnado.Tabs.iOS.Preserver.Preserve();
             Sharpnado.Shades.iOS.iOSShadowsRenderer.Initialize();
             CarouselViewRenderer.Init();
-
+            ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             LoadApplication(new App());
 

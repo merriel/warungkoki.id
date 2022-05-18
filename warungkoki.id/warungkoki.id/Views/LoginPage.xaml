@@ -18,7 +18,7 @@
                     TextColor="DarkSlateGray" Command="{Binding LoginCommand}" CornerRadius="20"/>
                 <BoxView HeightRequest="1" Color="LightGray" IsVisible="true"/>
                 <Button VerticalOptions="Center" BackgroundColor="White" Text="Login with Google" FontFamily="OpenSansSemibold" 
-                    TextColor="DarkSlateGray" ImageSource="google_ic" CornerRadius="20" Command="{Binding LoginGoogleCommand}"/>
+                    TextColor="DarkSlateGray" ImageSource="google_ic" CornerRadius="20" Clicked="btnLogin_Clicked" />
             </StackLayout>
             <Label Text="WarungKoki v0.1" HeightRequest="20" TextColor="WhiteSmoke" FontFamily="OpenSansLightItalic" VerticalTextAlignment="Center"
                    VerticalOptions="End" HorizontalOptions="Center" HorizontalTextAlignment="End" />

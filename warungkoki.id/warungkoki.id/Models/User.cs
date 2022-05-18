@@ -32,4 +32,10 @@ namespace warungkoki.id.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+    public interface IGoogleManager
+    {
+        void Login(Action<User, string> OnLoginComplete);
+
+        void Logout();
+    }
 }
