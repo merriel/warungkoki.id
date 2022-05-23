@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "601804528259-sbu5kn43c496oa0j95jfaprvp7aupb1c.apps.googleusercontent.com",
+          "client_id": "601804528259-mjg9or5clhlmeda3h3dqg8r23ts32koo.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.companyname.warungkoki.id",
-            "certificate_hash": "309243e2f41366741e940a892c00a61267790cea"
+            "certificate_hash": "2c8f7a32c4a6e440497ce78a90df0c801cc5648c"
           }
         },
         {
@@ -35,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "601804528259-mc4brdrc3piltsr6gbdulni8bbulnr5p.apps.googleusercontent.com",
+              "client_id": "601804528259-c23lp4t50gcn1of78bjsod93ekp7skrb.apps.googleusercontent.com",
               "client_type": 3
             },
             {

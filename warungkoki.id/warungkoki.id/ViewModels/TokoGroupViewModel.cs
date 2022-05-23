@@ -1,18 +1,11 @@
-﻿using Google.Apis.Auth.OAuth2.Responses;
-using Newtonsoft.Json;
-using Plugin.GoogleClient;
-using Plugin.GoogleClient.Shared;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using warungkoki.id.Models;
-using warungkoki.id.Views;
-using Xamarin.Auth;
 using Xamarin.Forms;
 
 namespace warungkoki.id.ViewModels

@@ -19,9 +19,10 @@ namespace warungkoki.id.Views
 
         public LoginPage()
         {
-            InitializeComponent();
             _googleManager = DependencyService.Get<IGoogleManager>();
             CheckUserLoggedIn();
+            InitializeComponent();
+            
             this.BindingContext = new LoginViewModel();
         }
         private void CheckUserLoggedIn()
