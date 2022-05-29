@@ -46,7 +46,7 @@ namespace warungkoki.id.Droid.Renderers
            
         }
 
-        public void SetAppearance(BottomNavigationView bottomView, ShellAppearance appearance)
+        public void SetAppearance(BottomNavigationView bottomView, IShellAppearanceElement appearance)
         {
             bottomView.SetBackgroundColor(Android.Graphics.Color.ParseColor("#57ba7d"));
 

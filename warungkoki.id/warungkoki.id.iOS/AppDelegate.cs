@@ -4,6 +4,7 @@ using System.Linq;
 using CarouselView.FormsPlugin.iOS;
 using Foundation;
 using UIKit;
+using warungkoki.id.iOS.Services;
 
 namespace warungkoki.id.iOS
 {
@@ -29,7 +30,7 @@ namespace warungkoki.id.iOS
             CarouselViewRenderer.Init();
             ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(new OAuth2Service()));
 
             return base.FinishedLaunching(app, options);
         }

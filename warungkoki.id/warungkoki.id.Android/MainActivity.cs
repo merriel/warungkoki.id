@@ -1,13 +1,15 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Plugin.FacebookClient;
+using Android.Content;
+using Java.Security;
+using Acr.UserDialogs;
+using Plugin.GoogleClient;
 using CarouselView.FormsPlugin.Droid;
-using Android.Gms.Tasks;
-using Android.Gms.Auth.Api.SignIn;
-using Android.Gms.Auth.Api;
+using warungkoki.id.Droid.Services;
 
 namespace warungkoki.id.Droid
 {
@@ -23,6 +25,9 @@ namespace warungkoki.id.Droid
             Rg.Plugins.Popup.Popup.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            FacebookClientManager.Initialize(this);
+            GoogleClientManager.Initialize(this);
+            UserDialogs.Init(() => this);
             Instance = this;
             CarouselViewRenderer.Init();
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
@@ -30,8 +35,11 @@ namespace warungkoki.id.Droid
            
             global::Android.Graphics.Color color_xamarin_blue;
             color_xamarin_blue = new global::Android.Graphics.Color(0x34, 0x98, 0xdb);
-          
-            LoadApplication(new App());
+
+            LoadApplication(new App(new OAuth2Service()));
+                #if DEBUG
+                    PrintHashKey(this);
+                #endif
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -43,12 +51,8 @@ namespace warungkoki.id.Droid
         protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
-            if (requestCode == 1)
-            {
-                //Task<GoogleSignInAccount> task = GoogleSignIn.GetSignedInAccountFromIntent(data);
-                GoogleSignInResult result = Auth.GoogleSignInApi.GetSignInResultFromIntent(data);
-                GoogleManager.Instance.OnAuthCompleted(result);
-            }
+            FacebookClientManager.OnActivityResult(requestCode, resultCode, data);
+            GoogleClientManager.OnAuthCompleted(requestCode, resultCode, data);
         }
 
         public override void OnBackPressed()
@@ -62,5 +66,27 @@ namespace warungkoki.id.Droid
                 // Do something if there are not any pages in the `PopupStack`
             }
         }
-    }
+        public static void PrintHashKey(Context pContext)
+        {
+            try
+            {
+                PackageInfo info = Android.App.Application.Context.PackageManager.GetPackageInfo(Android.App.Application.Context.PackageName, PackageInfoFlags.Signatures);
+                foreach (var signature in info.Signatures)
+                {
+                    MessageDigest md = MessageDigest.GetInstance("SHA");
+                    md.Update(signature.ToByteArray());
+
+                    System.Diagnostics.Debug.WriteLine(Convert.ToBase64String(md.Digest()));
+                }
+            }
+            catch (NoSuchAlgorithmException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+        }
+}
 }

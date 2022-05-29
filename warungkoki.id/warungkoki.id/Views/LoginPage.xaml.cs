@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using warungkoki.id.Models;
+using warungkoki.id.Services;
 using warungkoki.id.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,22 +18,22 @@ namespace warungkoki.id.Views
         User user_google = new User();
         public bool IsLogedIn { get; set; }
 
-        public LoginPage()
+        public LoginPage(IOAuth2Service oAuth2Service)
         {
             _googleManager = DependencyService.Get<IGoogleManager>();
             CheckUserLoggedIn();
             InitializeComponent();
-            
-            this.BindingContext = new LoginViewModel();
+            this.BindingContext = new SocialLoginPageViewModel(oAuth2Service);
+            //this.BindingContext = new LoginViewModel();
         }
         private void CheckUserLoggedIn()
         {
-            _googleManager.Login(OnLoginComplete);
+         //   _googleManager.Login(OnLoginComplete);
         }
 
         private void btnLogin_Clicked(object sender, EventArgs e)
         {
-            _googleManager.Login(OnLoginComplete);
+         //   _googleManager.Login(OnLoginComplete);
         }
         private async void OnLoginComplete(User googleUser, string message)
         {

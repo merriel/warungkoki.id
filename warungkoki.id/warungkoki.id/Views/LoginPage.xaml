@@ -12,13 +12,39 @@
         <Grid VerticalOptions="FillAndExpand">
             <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
                 <Image Source="koki_logo.png" HorizontalOptions="CenterAndExpand" HeightRequest="150"/>
-                <Entry Placeholder="Email" Text="{Binding Value, Mode=TwoWay}" FontFamily="OpenSansRegular" />
-                <Entry Placeholder="Password" IsPassword="True" FontFamily="OpenSansRegular" />
+                
+                <Entry Placeholder="Email" Text="{Binding Value, Mode=TwoWay}" FontFamily="OpenSansRegular" IsVisible="false" />
+                <Entry Placeholder="Password" IsPassword="True" FontFamily="OpenSansRegular" IsVisible="false"/>
                 <Button VerticalOptions="Center" BackgroundColor="White" Text="Login" FontFamily="OpenSansSemibold"
-                    TextColor="DarkSlateGray" Command="{Binding LoginCommand}" CornerRadius="20"/>
-                <BoxView HeightRequest="1" Color="LightGray" IsVisible="true"/>
+                    TextColor="DarkSlateGray" Command="{Binding LoginCommand}" CornerRadius="20" IsVisible="false"/>
+                <BoxView HeightRequest="1" Color="LightGray" IsVisible="false" />
+                
                 <Button VerticalOptions="Center" BackgroundColor="White" Text="Login with Google" FontFamily="OpenSansSemibold" 
-                    TextColor="DarkSlateGray" ImageSource="google_ic" CornerRadius="20" Clicked="btnLogin_Clicked" />
+                    TextColor="DarkSlateGray" ImageSource="google_ic" CornerRadius="20" Clicked="btnLogin_Clicked" IsVisible="false" />
+                
+                <StackLayout Padding="10"
+                         VerticalOptions="CenterAndExpand" 
+                         x:Name="mainLayout"
+                         BindableLayout.ItemsSource="{Binding AuthenticationNetworks}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Button Text="{Binding Name, StringFormat='Login with {0}'}"
+                            ImageSource="{Binding Icon}"
+                            Command="{Binding Path=BindingContext.OnLoginCommand, Source={x:Reference mainLayout}}"
+                            CommandParameter="{Binding .}"     
+                            FontFamily="OpenSansSemibold" 
+                            TextColor="{Binding Foreground}"
+                            BackgroundColor="{Binding Background}"
+                            CornerRadius="20"
+                                    HeightRequest="45"
+                                    Margin="10"
+                                    Padding="10"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
             </StackLayout>
             <Label Text="WarungKoki v0.1" HeightRequest="20" TextColor="WhiteSmoke" FontFamily="OpenSansLightItalic" VerticalTextAlignment="Center"
                    VerticalOptions="End" HorizontalOptions="Center" HorizontalTextAlignment="End" />
