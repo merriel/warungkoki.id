@@ -80,7 +80,7 @@ namespace warungkoki.id.ViewModels
                         Application.Current.Properties["Username"] = item.name;
                         //if result insert into kehadiran table then open take picture page, else show exception / alertdialog
                         //for now return from API qrcode = null, _POST on PHP not working
-                        await Shell.Current.GoToAsync($"//{nameof(TransactionPage)}");
+                        await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                     }
                 }
                 else

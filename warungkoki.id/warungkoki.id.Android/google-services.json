@@ -1,48 +1,48 @@
 {
   "project_info": {
-    "project_number": "601804528259",
-    "project_id": "warungkoki-347805",
-    "storage_bucket": "warungkoki-347805.appspot.com"
+    "project_number": "485443675908",
+    "project_id": "warungkoki-351503",
+    "storage_bucket": "warungkoki-351503.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:601804528259:android:025e128efbca10211459b6",
+        "mobilesdk_app_id": "1:485443675908:android:dbfb1f40f73acee55e9251",
         "android_client_info": {
           "package_name": "com.companyname.warungkoki.id"
         }
       },
       "oauth_client": [
         {
-          "client_id": "601804528259-mjg9or5clhlmeda3h3dqg8r23ts32koo.apps.googleusercontent.com",
+          "client_id": "485443675908-bqeu224ogrd19thkkbdm4ektua3savia.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.companyname.warungkoki.id",
-            "certificate_hash": "2c8f7a32c4a6e440497ce78a90df0c801cc5648c"
+            "certificate_hash": "309243e2f41366741e940a892c00a61267790cea"
           }
         },
         {
-          "client_id": "601804528259-mc4brdrc3piltsr6gbdulni8bbulnr5p.apps.googleusercontent.com",
+          "client_id": "485443675908-htbul2d8pb9tdit3l65k7qi7htqcjfj8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBKC-_E1Uswj3jB6zeNrYXrD7b_o8JBdvY"
+          "current_key": "AIzaSyBrUjKfksnZKhCgvPm8YPRUlXV6k_-3fkQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "601804528259-c23lp4t50gcn1of78bjsod93ekp7skrb.apps.googleusercontent.com",
+              "client_id": "485443675908-htbul2d8pb9tdit3l65k7qi7htqcjfj8.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "601804528259-koje6aepg3gru5rlbnl6r7il7h6m95ec.apps.googleusercontent.com",
+              "client_id": "485443675908-q8ln2m9cqkhma2b5qmeg4npdo0nhhdlo.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.companyname.warungkoki.id"
+                "bundle_id": "485443675908-bqeu224ogrd19thkkbdm4ektua3savia.apps.googleusercontent.com"
               }
             }
           ]

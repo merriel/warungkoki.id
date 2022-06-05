@@ -1,8 +1,10 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using Plugin.GoogleClient;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using warungkoki.id.Models;
+using warungkoki.id.Services;
 using warungkoki.id.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,6 +14,8 @@ namespace warungkoki.id.Views
     public partial class HomePageNew : ContentPage
     {
         public Item Item { get; set; }
+
+        IOAuth2Service auth;
 
         public HomePageNew()
         {
@@ -33,6 +37,13 @@ namespace warungkoki.id.Views
             var page = new SelectTokoPage(new TokoGroupViewModel());
 
             await PopupNavigation.Instance.PushAsync(page);
+        }
+
+        private void Logout_Clicked(object sender, EventArgs e)
+        {
+            CrossGoogleClient.Current.Logout();
+            Application.Current.Properties.Clear();
+            Navigation.PushAsync(new LoginPage(auth));
         }
     }
 }

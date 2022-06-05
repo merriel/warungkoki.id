@@ -4,8 +4,6 @@ namespace warungkoki.id.Models
 {
     public class Data
     {
-        [JsonProperty("is_silhouette")]
-        public bool IsSilhouette { get; set; }
         public int Height { get; set; }
         public string Url { get; set; }
         public int Width { get; set; }

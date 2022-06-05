@@ -33,6 +33,8 @@ namespace warungkoki.id.ViewModels
 
         public ObservableCollection<AuthNetwork> AuthenticationNetworks { get; set; } = new ObservableCollection<AuthNetwork>()
         {
+            // Hidden FB & IG Login Auth
+            /*
             new AuthNetwork()
             {
                 Name = "Facebook",
@@ -46,7 +48,8 @@ namespace warungkoki.id.ViewModels
                 Icon = "ic_ig",
                 Foreground = "#FFFFFF",
                 Background = "#DD2A7B"
-            },
+            }, 
+            */
               new AuthNetwork()
             {
                 Name = "Google",
@@ -109,8 +112,7 @@ namespace warungkoki.id.ViewModels
                     };
                     Application.Current.Properties["Username"] = socialLoginData.Name;
                     UserDialogs.Instance.HideLoading();
-                    //await App.Current.MainPage.Navigation.PushModalAsync(new HomePage(socialLoginData));
-                    await Shell.Current.GoToAsync($"//{nameof(TransactionPage)}");
+                    await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                 }
                 else
                 {
@@ -174,8 +176,7 @@ namespace warungkoki.id.ViewModels
                                 Name = $"{facebookProfile.FirstName} {facebookProfile.LastName}",
                             };
                             Application.Current.Properties["Username"] = socialLoginData.Name;
-                            //await App.Current.MainPage.Navigation.PushModalAsync(new HomePage(socialLoginData));
-                            await Shell.Current.GoToAsync($"//{nameof(TransactionPage)}");
+                            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                             break;
                         case FacebookActionStatus.Canceled:
                             await App.Current.MainPage.DisplayAlert("Facebook Auth", "Canceled", "Ok");
@@ -234,8 +235,7 @@ namespace warungkoki.id.ViewModels
                                 Name = e.Data.Name,
                             };
                             Application.Current.Properties["Username"] = socialLoginData.Name;
-                            //await App.Current.MainPage.Navigation.PushModalAsync(new HomePage(socialLoginData));
-                            await Shell.Current.GoToAsync($"//{nameof(TransactionPage)}");
+                            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                             break;
                         case GoogleActionStatus.Canceled:
                             await App.Current.MainPage.DisplayAlert("Google Auth", "Canceled", "Ok");

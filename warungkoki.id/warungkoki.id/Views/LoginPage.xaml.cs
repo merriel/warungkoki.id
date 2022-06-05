@@ -14,27 +14,16 @@ namespace warungkoki.id.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        private readonly IGoogleManager _googleManager;
         User user_google = new User();
         public bool IsLogedIn { get; set; }
 
         public LoginPage(IOAuth2Service oAuth2Service)
         {
-            _googleManager = DependencyService.Get<IGoogleManager>();
-            CheckUserLoggedIn();
             InitializeComponent();
             this.BindingContext = new SocialLoginPageViewModel(oAuth2Service);
             //this.BindingContext = new LoginViewModel();
         }
-        private void CheckUserLoggedIn()
-        {
-         //   _googleManager.Login(OnLoginComplete);
-        }
-
-        private void btnLogin_Clicked(object sender, EventArgs e)
-        {
-         //   _googleManager.Login(OnLoginComplete);
-        }
+       
         private async void OnLoginComplete(User googleUser, string message)
         {
             if (googleUser != null)
@@ -43,7 +32,7 @@ namespace warungkoki.id.Views
                 IsLogedIn = true;
                 Application.Current.Properties["Username"] =googleUser.name;
                 Application.Current.Properties["Email"] = googleUser.email;
-                await Shell.Current.GoToAsync($"//{nameof(TransactionPage)}");
+                await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
             }
             else
             {

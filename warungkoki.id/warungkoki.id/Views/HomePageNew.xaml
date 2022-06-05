@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="warungkoki.id.Views.HomePageNew"
-              xmlns:vm="clr-namespace:warungkoki.id.ViewModels"
+             xmlns:plugin="clr-namespace:Plugin.Badge.Abstractions;assembly=Plugin.Badge.Abstractions" 
              xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" 
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
@@ -13,9 +13,10 @@
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ImageButton Source="profile_ic.png"
+            <ImageButton Source="email.png"
                          HorizontalOptions="Start"
                          HeightRequest="25"
+                         plugin:TabBadge.BadgeText="3"
                          WidthRequest="25" BackgroundColor="Transparent" Grid.Column="0" />
             <Image Source="titlebar.jpeg" Grid.Column="1"
            HorizontalOptions="CenterAndExpand"
@@ -26,7 +27,7 @@
         <ToolbarItem Text="Alamat" Order="Secondary" />
         <ToolbarItem Text="History Saldo Warungkoki" Order="Secondary" />
         <ToolbarItem Text="Voucher Undian" Order="Secondary" />
-        <ToolbarItem Text="Logout" Order="Secondary" />
+        <ToolbarItem Text="Logout" Order="Secondary" Clicked="Logout_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
@@ -47,7 +48,7 @@
                 </Grid.RowDefinitions>
                 <BoxView CornerRadius="20" Grid.Row="0" HeightRequest="50" Margin="0,0,0,0" BackgroundColor="#57ba7d"/>
                 <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand" Margin="20,15,20,0" HorizontalOptions="Fill">
-                    <Label Text="Hello, User" x:Name="userr" FontSize="Title" FontFamily="OpenSansBold" TextColor="DarkSlateGray" FontAttributes="Bold" />
+                    <Label Text="Hello, User" x:Name="userr" FontSize="20" FontFamily="OpenSansBold" TextColor="DarkSlateGray" FontAttributes="Bold" />
                 </StackLayout>
                 <StackLayout Grid.Row="2" HeightRequest="40"  VerticalOptions="FillAndExpand"  Margin="15,10,15,0" HorizontalOptions="Fill">
                     <Frame CornerRadius="20" HeightRequest="30" Padding="5" BackgroundColor="#f3fcd3">

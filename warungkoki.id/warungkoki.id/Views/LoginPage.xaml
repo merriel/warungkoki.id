@@ -7,11 +7,10 @@
              x:Class="warungkoki.id.Views.LoginPage"
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False"
-             BackgroundColor="#fbb03b">
+             BackgroundImageSource="login.jpg">
     <ContentPage.Content>
         <Grid VerticalOptions="FillAndExpand">
-            <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-                <Image Source="koki_logo.png" HorizontalOptions="CenterAndExpand" HeightRequest="150"/>
+            <StackLayout Padding="10,0,10,0" VerticalOptions="EndAndExpand" Margin="0,0,0,60">
                 
                 <Entry Placeholder="Email" Text="{Binding Value, Mode=TwoWay}" FontFamily="OpenSansRegular" IsVisible="false" />
                 <Entry Placeholder="Password" IsPassword="True" FontFamily="OpenSansRegular" IsVisible="false"/>
@@ -19,10 +18,7 @@
                     TextColor="DarkSlateGray" Command="{Binding LoginCommand}" CornerRadius="20" IsVisible="false"/>
                 <BoxView HeightRequest="1" Color="LightGray" IsVisible="false" />
                 
-                <Button VerticalOptions="Center" BackgroundColor="White" Text="Login with Google" FontFamily="OpenSansSemibold" 
-                    TextColor="DarkSlateGray" ImageSource="google_ic" CornerRadius="20" Clicked="btnLogin_Clicked" IsVisible="false" />
-                
-                <StackLayout Padding="10"
+                <StackLayout Padding="10"                             
                          VerticalOptions="CenterAndExpand" 
                          x:Name="mainLayout"
                          BindableLayout.ItemsSource="{Binding AuthenticationNetworks}">

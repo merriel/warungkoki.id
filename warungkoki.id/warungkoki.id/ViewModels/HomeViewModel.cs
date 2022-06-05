@@ -24,6 +24,8 @@ namespace warungkoki.id.ViewModels
         {
             this.Navigation = navigation;
             GetBannersAsync();
+
+            // Select toko belum bener, get product by id toko
             GetProductsAsync("31");
             ItemTappedCommand = new Command(async () => await OnTapClicked());
 
@@ -125,8 +127,6 @@ namespace warungkoki.id.ViewModels
                 {
                     string result = response.Substring(1);
                     var json = JsonConvert.DeserializeObject<List<Banner>>(result);
-                    //System.Diagnostics.Debug.WriteLine("HASIL:");
-                    //System.Diagnostics.Debug.WriteLine(result);
                     BannersSource = new ObservableCollection<Banner>();
            
                     foreach (Banner item in json)
@@ -156,7 +156,10 @@ namespace warungkoki.id.ViewModels
             {
 
                 var myHttpClient = new HttpClient();
+                //Get Product by wilayah sementara nembak ID langsung, krn select toko belum bener
+                //Uri uri = new Uri("http://elcapersada.com/warungkoki/android/get_listproduct.php?wilayah_id=" + wilayah_id);
                 Uri uri = new Uri("http://elcapersada.com/warungkoki/android/get_listproduct.php?wilayah_id=31");
+               
                 var response = await myHttpClient.GetStringAsync(uri);
 
                 if (response != "[]")

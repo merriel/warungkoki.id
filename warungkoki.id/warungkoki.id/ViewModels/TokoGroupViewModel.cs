@@ -45,7 +45,7 @@ namespace warungkoki.id.ViewModels
         public TokoGroupViewModel()
         {
             items = new ObservableCollection<LocationViewModel>();
-            Items = new ObservableCollection<LocationViewModel>();
+            //Items = new ObservableCollection<LocationViewModel>();
             LoadHotelsCommand = new Command(async () => await ExecuteLoadItemsCommandAsync());
             RefreshItemsCommand = new Command<LocationViewModel>((item) => ExecuteRefreshItemsCommand(item));
         }
@@ -86,8 +86,6 @@ namespace warungkoki.id.ViewModels
                 if (response != "[]")
                 {
                     string result = response.Substring(1);
-                    System.Diagnostics.Debug.WriteLine("HASIL:");
-                    System.Diagnostics.Debug.WriteLine(result);
                     json = JsonConvert.DeserializeObject<List<Location>>(result);
                     
                     foreach (Location item in json)
@@ -138,8 +136,6 @@ namespace warungkoki.id.ViewModels
                 if (response != "[]")
                 {
                     string result = response.Substring(1);
-                    System.Diagnostics.Debug.WriteLine("HASIL:");
-                    System.Diagnostics.Debug.WriteLine(result);
                     var jsonalamat = JsonConvert.DeserializeObject<List<Alamat>>(result);
                     List<Alamat> detilalamat = new List<Alamat>();
 

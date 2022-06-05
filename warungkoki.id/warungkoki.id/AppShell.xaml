@@ -2,7 +2,8 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:warungkoki.id.Views" 
-       xmlns:tab="clr-namespace:Sharpnado.Tabs;assembly=Sharpnado.Tabs" xmlns:c="clr-namespace:warungkoki.id"
+       xmlns:plugin="clr-namespace:Plugin.Badge.Abstractions;assembly=Plugin.Badge.Abstractions" 
+       xmlns:c="clr-namespace:warungkoki.id"
        x:Name="Root"
        Title="warungkoki.id"
        BackgroundColor="{StaticResource Primary}"
@@ -41,14 +42,14 @@
         <Tab Title="Home" Icon="homepage_ic.png">
         <ShellContent  Route="HomePage" ContentTemplate="{DataTemplate local:HomePageNew}" />
         </Tab>
-        <Tab Title="Keranjang" Icon="cart_ic.png">
+        <Tab Title="Keranjang" Icon="cart_ic.png" plugin:TabBadge.BadgeText="3">
             <ShellContent  Route="CartPage" ContentTemplate="{DataTemplate local:TransactionPageNew}" />
         </Tab>
         <Tab Title="Scan" >
             <ShellContent Route="ScanPage" ContentTemplate="{DataTemplate local:ScanPage}" />
         </Tab>
         <Tab Title="Transaksi" Icon="transaction_ic.png" >
-        <ShellContent Route="TransactionPage" ContentTemplate="{DataTemplate local:HomePageNew}" />
+            <ShellContent Route="TransactionPage" ContentTemplate="{DataTemplate local:TransactionPageNew}" />
         </Tab>
         <Tab Title="Favorit" Icon="star_ic.png">     
         <ShellContent  Route="FavPage" ContentTemplate="{DataTemplate local:TransactionPageNew}" />

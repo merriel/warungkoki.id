@@ -12,12 +12,11 @@ namespace warungkoki.id
         public AppShell(IOAuth2Service oAuth2Service)
         {
             InitializeComponent();
-            
+            if (!Application.Current.Properties.ContainsKey("Username") || Application.Current.Properties["Username"] == null)
+            {
                 Navigation.PushAsync(new LoginPage(oAuth2Service));
-            
-                
-            
-        
+            }
+
         }
 
     }
