@@ -284,4 +284,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\email.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\discount.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\right_arrow.png" />
+  </ItemGroup>
 </Project>

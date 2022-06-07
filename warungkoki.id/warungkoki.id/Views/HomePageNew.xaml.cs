@@ -14,9 +14,6 @@ namespace warungkoki.id.Views
     public partial class HomePageNew : ContentPage
     {
         public Item Item { get; set; }
-
-        IOAuth2Service auth;
-
         public HomePageNew()
         {
             InitializeComponent();
@@ -38,12 +35,9 @@ namespace warungkoki.id.Views
 
             await PopupNavigation.Instance.PushAsync(page);
         }
-
-        private void Logout_Clicked(object sender, EventArgs e)
+        private void Profile_Clicked(object sender, EventArgs e)
         {
-            CrossGoogleClient.Current.Logout();
-            Application.Current.Properties.Clear();
-            Navigation.PushAsync(new LoginPage(auth));
+            Navigation.PushAsync(new Profile());
         }
     }
 }

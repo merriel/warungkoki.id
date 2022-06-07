@@ -43,7 +43,7 @@
         <ShellContent  Route="HomePage" ContentTemplate="{DataTemplate local:HomePageNew}" />
         </Tab>
         <Tab Title="Keranjang" Icon="cart_ic.png" plugin:TabBadge.BadgeText="3">
-            <ShellContent  Route="CartPage" ContentTemplate="{DataTemplate local:TransactionPageNew}" />
+            <ShellContent  Route="CartPage" ContentTemplate="{DataTemplate local:CartPage}" />
         </Tab>
         <Tab Title="Scan" >
             <ShellContent Route="ScanPage" ContentTemplate="{DataTemplate local:ScanPage}" />

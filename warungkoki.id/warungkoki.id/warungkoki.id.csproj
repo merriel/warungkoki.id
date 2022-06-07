@@ -91,12 +91,18 @@
     <Compile Update="Views\TransactionPage.xaml.cs">
       <DependentUpon>TransactionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\CartPage.xaml.cs">
+      <DependentUpon>CartPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\TransactionPageNew.xaml.cs">
       <DependentUpon>TransactionPageNew.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\Profile.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\SelectTokoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

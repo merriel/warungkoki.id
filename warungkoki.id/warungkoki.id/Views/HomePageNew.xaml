@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="warungkoki.id.Views.HomePageNew"
              xmlns:plugin="clr-namespace:Plugin.Badge.Abstractions;assembly=Plugin.Badge.Abstractions" 
-             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" 
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
               BackgroundColor="#fcf3e6">
@@ -24,10 +23,9 @@
         </Grid>
     </Shell.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Alamat" Order="Secondary" />
+        <ToolbarItem Text="Profil" Order="Secondary" Clicked="Profile_Clicked"/>
         <ToolbarItem Text="History Saldo Warungkoki" Order="Secondary" />
         <ToolbarItem Text="Voucher Undian" Order="Secondary" />
-        <ToolbarItem Text="Logout" Order="Secondary" Clicked="Logout_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
