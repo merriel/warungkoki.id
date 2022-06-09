@@ -14,7 +14,8 @@ namespace warungkoki.id.Views
             InitializeComponent();
             
 
-            data.Add(new Product { prod_name = "a",harga_act= 123000, alamat = "123"});
+            data.Add(new Product { prod_name = "a",harga_act= 123000, alamat = "123", img= "ic_toko.png"});
+            data.Add(new Product { prod_name = "a", harga_act = 123000, alamat = "123", img = "ic_toko.png" });
 
             listView.ItemsSource= data;
         }

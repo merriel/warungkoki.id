@@ -19,10 +19,8 @@
         </Grid>
     </Shell.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Alamat" Order="Secondary" />
         <ToolbarItem Text="History Saldo Warungkoki" Order="Secondary" />
         <ToolbarItem Text="Voucher Undian" Order="Secondary" />
-        <ToolbarItem Text="Logout" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
@@ -57,15 +55,15 @@
                         <Label Text="My Profile" FontFamily="OpenSansSemibold" FontSize="25" FontAttributes="Bold"></Label>
                         <Label Text="User Information" FontFamily="OpenSansSemibold" FontSize="10" FontAttributes="Bold"></Label>
                         <Label Text="Full Name" FontFamily="OpenSans-Regular" FontSize="15" FontAttributes="Bold"></Label>
-                        <Entry Text="Name" FontFamily="OpenSans-Regular" FontSize="12"></Entry>
+                        <Entry Text="Name" x:Name="name"  FontFamily="OpenSans-Regular" FontSize="12"></Entry>
                         <Label Text="Email" FontFamily="OpenSans-Regular"  FontSize="15" FontAttributes="Bold"></Label>
-                        <Entry Text="Email" Keyboard="Email" FontFamily="OpenSans-Regular" FontSize="12"></Entry>
+                        <Entry Text="Email" x:Name="email" Keyboard="Email" FontFamily="OpenSans-Regular" FontSize="12"></Entry>
                         <Label Text="Phone Number" FontFamily="OpenSans-Regular" FontSize="15" FontAttributes="Bold"></Label>
-                        <Entry Text="Phone Number" Keyboard="Numeric" FontFamily="OpenSans-Regular" FontSize="12"></Entry>
+                        <Entry Text="Phone Number" x:Name="phone" Keyboard="Numeric" FontFamily="OpenSans-Regular" FontSize="12"></Entry>
                         <Label Text="NIK" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold" ></Label>
-                        <Entry Text="NIK" Keyboard="Numeric" Placeholder="N" FontFamily="OpenSans-Regular" FontSize="12"/>
+                        <Entry Text="NIK" x:Name ="nik" Keyboard="Numeric" Placeholder="NIK" FontFamily="OpenSans-Regular" FontSize="12"/>
                         <Label Text="PIN" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold"></Label>
-                        <Entry Text="PIN" IsPassword="True" FontFamily="OpenSans-Regular"  FontSize="12"/>
+                        <Entry Text="PIN" x:Name="pin" IsPassword="True" FontFamily="OpenSans-Regular"  FontSize="12"/>
                         <Grid>
                             <Button Text="Update" Grid.Column="0" Clicked="Update_Clicked" CornerRadius="10"/>
                             <Button Text="Logout" Grid.Column="1" Clicked="Logout_Clicked" CornerRadius="10"/>

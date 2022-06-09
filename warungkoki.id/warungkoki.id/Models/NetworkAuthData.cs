@@ -10,6 +10,8 @@ namespace warungkoki.id.Models
 
         public string Logo { get; set; }
 
+        public string Email { get; set; }
+
         public string Picture { get; set; }
 
         public string Background { get; set; }

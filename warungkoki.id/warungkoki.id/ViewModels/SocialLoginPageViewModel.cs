@@ -13,6 +13,9 @@ using Xamarin.Forms;
 using warungkoki.id.Models;
 using warungkoki.id.Services;
 using warungkoki.id.Views;
+using System.Net.Http;
+using System.Text;
+using System.Collections.Generic;
 
 namespace warungkoki.id.ViewModels
 {
@@ -223,18 +226,20 @@ namespace warungkoki.id.ViewModels
     #if DEBUG
                             var googleUserString = JsonConvert.SerializeObject(e.Data);
                             Debug.WriteLine($"Google Logged in succesfully: {googleUserString}");
-    #endif
+#endif
 
                             var socialLoginData = new NetworkAuthData
                             {
                                 Id = e.Data.Id,
                                 Logo = authNetwork.Icon,
+                                Email = e.Data.Email,
                                 Foreground = authNetwork.Foreground,
                                 Background = authNetwork.Background,
                                 Picture = e.Data.Picture.AbsoluteUri,
                                 Name = e.Data.Name,
                             };
                             Application.Current.Properties["Username"] = socialLoginData.Name;
+                            LoginUserAsync(e.Data.Email);
                             await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                             break;
                         case GoogleActionStatus.Canceled:
@@ -260,6 +265,48 @@ namespace warungkoki.id.ViewModels
                 Debug.WriteLine(ex.ToString());
             }
         }
+        public async Task LoginUserAsync(string email)
+        {
+            try
+            {
+                var data = new User
+                {
+                    email = email
+                };
 
+                var jsonString = JsonConvert.SerializeObject(data);
+                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                var myHttpClient = new HttpClient();
+                Uri uri = new Uri("http://elcapersada.com/warungkoki/android/login_user.php" + "?email=" + email);
+                var response = await myHttpClient.GetStringAsync(uri);
+                System.Diagnostics.Debug.WriteLine(response);
+                if (response != "[]")
+                {
+                    string result = response.Substring(1);
+                    var json = JsonConvert.DeserializeObject<List<User>>(result);
+                    foreach (User item in json)
+                    {
+                        var valid_email = item.email;
+                        App.Username = item.name;
+                        Application.Current.Properties["ID"] = item.id;
+                        Application.Current.Properties["Username"] = item.name;
+                        //if result insert into kehadiran table then open take picture page, else show exception / alertdialog
+                        //for now return from API qrcode = null, _POST on PHP not working
+                        await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+                    }
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert(null, "Email not found, please register", "ok");
+                }
+                myHttpClient.Dispose();
+            }
+
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("CAUGHT EXCEPTION:");
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+        }
     }
 }
