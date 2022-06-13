@@ -290,4 +290,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\right_arrow.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\alamat.png" />
+  </ItemGroup>
 </Project>

@@ -10,7 +10,7 @@ namespace warungkoki.id.Models
     {
         public int id { get; set; }
         public string name{ get; set; }
-        public List<Alamat> Addresss
+        public List<Area> Addresss
         {
             get;
             set;
@@ -21,7 +21,7 @@ namespace warungkoki.id.Models
             set;
         } = false;
         public Location() { }
-        public Location(string Name, List<Alamat> address)
+        public Location(string Name, List<Area> address)
         {
             name = Name;
             Addresss = address;

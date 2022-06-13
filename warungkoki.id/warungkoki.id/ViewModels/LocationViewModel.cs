@@ -12,7 +12,7 @@ namespace warungkoki.id.ViewModels
         {
             Location = loc;
             _expanded = expanded;
-            foreach (Alamat address in loc.Addresss)
+            foreach (Area address in loc.Addresss)
             {
                 Add(new AlamatViewModel(address));
             }

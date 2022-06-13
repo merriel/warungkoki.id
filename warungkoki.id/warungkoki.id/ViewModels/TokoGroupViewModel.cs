@@ -136,12 +136,12 @@ namespace warungkoki.id.ViewModels
                 if (response != "[]")
                 {
                     string result = response.Substring(1);
-                    var jsonalamat = JsonConvert.DeserializeObject<List<Alamat>>(result);
-                    List<Alamat> detilalamat = new List<Alamat>();
+                    var jsonalamat = JsonConvert.DeserializeObject<List<Area>>(result);
+                    List<Area> detilalamat = new List<Area>();
 
-                    foreach (Alamat item in jsonalamat)
+                    foreach (Area item in jsonalamat)
                     {
-                        detilalamat.Add(new Alamat { name = item.name, id = item.id, alamat = item.alamat});
+                        detilalamat.Add(new Area { name = item.name, id = item.id, alamat = item.alamat});
                     }
                     
                         itemsloc.Add(new Location { name = locname,Addresss= detilalamat});

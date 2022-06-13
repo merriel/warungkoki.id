@@ -340,10 +340,13 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\right_arrow.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\alamat.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadGenericExceptionInfoBarwarungkokiidAndroidHideInfoBar="True" XamarinHotReloadDebuggerTimeoutExceptionwarungkokiidAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionwarungkokiidAndroidHideInfoBar="True" XamarinHotReloadGenericExceptionInfoBarwarungkokiidAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

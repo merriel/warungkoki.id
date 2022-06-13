@@ -8,14 +8,15 @@ namespace warungkoki.id.Models
     {
         public int id { get; set; }
         
-        public string name { get; set; }
+        public string user_id { get; set; }
+        public string district_id { get; set; }
+        public string judul { get; set; }
         public string alamat { get; set; }
-        public Alamat() { }
-        public Alamat(string Name, int ID, string lengkap)
-        {
-            name = Name;
-            id = ID;
-            alamat = lengkap;
-        }
+        public string penerima { get; set; }
+        public string no_hp{ get; set; }
+        public bool utama{ get; set; }
+        public string longitude{ get; set; }
+        public string latitude{ get; set; }
+        public string postal_code{ get; set; }
     }
 }

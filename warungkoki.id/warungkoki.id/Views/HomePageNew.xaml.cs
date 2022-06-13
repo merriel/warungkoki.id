@@ -39,5 +39,20 @@ namespace warungkoki.id.Views
         {
             Navigation.PushAsync(new Profile());
         }
+
+        private void Undian_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new UndianPage());
+        }
+
+        private void Alamat_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AlamatPage());
+        }
+
+        private void Saldo_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new TransactionPageNew());
+        }
     }
 }

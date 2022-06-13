@@ -4,8 +4,8 @@ namespace warungkoki.id.ViewModels
 {
     public class AlamatViewModel : BaseViewModel
     {
-        private Alamat _address;
-        public AlamatViewModel(Alamat address)
+        private Area _address;
+        public AlamatViewModel(Area address)
         {
             _address = address;
         }
@@ -31,7 +31,7 @@ namespace warungkoki.id.ViewModels
                 return _address.id;
             }
         }
-        public Alamat Alamat
+        public Area Alamat
         {
             get => _address;
         }

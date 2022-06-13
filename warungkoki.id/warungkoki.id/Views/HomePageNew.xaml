@@ -24,8 +24,9 @@
     </Shell.TitleView>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Profil" Order="Secondary" Clicked="Profile_Clicked"/>
-        <ToolbarItem Text="History Saldo Warungkoki" Order="Secondary" />
-        <ToolbarItem Text="Voucher Undian" Order="Secondary" />
+        <ToolbarItem Text="Alamat" Order="Secondary" Clicked="Alamat_Clicked"/>
+        <ToolbarItem Text="History Saldo Warungkoki" Order="Secondary" Clicked="Saldo_Clicked" />
+        <ToolbarItem Text="Voucher Undian" Order="Secondary" Clicked="Undian_Clicked" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>

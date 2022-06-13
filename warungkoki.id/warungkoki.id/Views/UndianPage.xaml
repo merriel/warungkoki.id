@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="warungkoki.id.Views.UndianPage">
+    <Shell.TitleView>
+        <Grid BackgroundColor="{StaticResource Primary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="email.png"
+                         HorizontalOptions="Start"
+                         HeightRequest="25"
+                         WidthRequest="25" BackgroundColor="Transparent" Grid.Column="0" />
+            <Image Source="titlebar.jpeg" Grid.Column="1"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="Center" Margin="0,10,10,10" />
+        </Grid>
+    </Shell.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profil" Order="Secondary" />
+        <ToolbarItem Text="Alamat" Order="Secondary" />
+        <ToolbarItem Text="History Saldo Warungkoki" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="5">
+            <Label Text="VOUCHER UNDIAN ANDA"
+                HorizontalOptions="StartAndExpand" Margin="20,50,20,0" FontSize="Large" FontAttributes="Bold"/>
+            <Label Text="Berikut adalah Voucher Undian Anda.Voucher ini akan diundi pada periode tertentu."
+                HorizontalOptions="StartAndExpand" Margin="20,0,20,20" FontSize="Micro"/>
+            <Frame CornerRadius="20" Grid.Row="0" BackgroundColor="#57ba7d" Margin="20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label Text="Total voucher yang anda miliki :"
+                HorizontalOptions="CenterAndExpand"  FontSize="Micro" TextColor="White"  Grid.Column="0"/>
+                    <Label Text="0 Voucher"
+                HorizontalOptions="Start"  FontSize="Micro" TextColor="White" FontAttributes="Bold" Grid.Column="1"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
