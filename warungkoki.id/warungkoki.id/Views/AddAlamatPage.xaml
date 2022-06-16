@@ -32,40 +32,14 @@
                 <Label Text="Judul Alamat" FontFamily="OpenSans-Regular" FontSize="15" FontAttributes="Bold"></Label>
                 <Entry Placeholder="Contoh:Alamat Rumah, Alamat Kantor" x:Name="name"  FontFamily="OpenSans-Regular" FontSize="12"></Entry>
                 <Label Text="Pilih Provinsi" FontFamily="OpenSans-Regular"  FontSize="15" FontAttributes="Bold"></Label>
-                <Picker x:Name="picker_provinsi" Title="Pilih Provinsi">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Banten</x:String>
-                            <x:String>DKI Jakarta</x:String>
-                            <x:String>Jawa Barat (Bodebek)</x:String>
-                            <x:String>Lampung</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
-                <Label Text="Pilih Kota/Kabupaten" FontFamily="OpenSans-Regular" FontSize="15" FontAttributes="Bold"></Label>
-                <Picker x:Name="picker_kota" Title="Pilih Kota/Kabupaten">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Kabupaten Bekasi</x:String>
-                            <x:String>Kota Bekasi</x:String>
-                            <x:String>Kabupaten Bogor</x:String>
-                            <x:String>Kota Bogor</x:String>
-                            <x:String>Kota Depok</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                <Picker x:Name="picker_provinsi" ItemsSource="{Binding List_Provinsi}" Title="Pilih Provinsi" SelectedItem="{Binding 
+                        Selected_Provinsi, Mode=TwoWay}"/>
+                <Label Text="Pilih Kota/Kabupaten" FontFamily="OpenSans-Regular" FontSize="15" FontAttributes="Bold" />
+                <Picker x:Name="picker_kota" Title="Pilih Kota/Kabupaten" SelectedItem="{Binding 
+                        Selected_Kota, Mode=TwoWay}" ItemsSource="{Binding List_Kota}" />
                 <Label Text="Pilih Kecamatan" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold" ></Label>
-                <Picker x:Name="picker_kecamatan" Title="Pilih Kecamatan/Desa">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Bantar Gebang</x:String>
-                            <x:String>Bekasi Barat</x:String>
-                            <x:String>Bekasi Selatan</x:String>
-                            <x:String>Bekasi Timur</x:String>
-                            <x:String>Bekasi Utara</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                <Picker x:Name="picker_kecamatan" Title="Pilih Kecamatan/Desa" ItemsSource="{Binding List_Kecamatan}" SelectedItem="{Binding 
+                        Selected_Kecamatan, Mode=TwoWay}" />
                 <Label Text="Nama Penerima" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold"></Label>
                 <Entry Placeholder="Contoh: Dodi, Agus" x:Name="penerima" FontFamily="OpenSans-Regular"  FontSize="12"/>
                 <Label Text="Nomor HP Penerima" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold"></Label>
@@ -76,8 +50,8 @@
                 <Entry Placeholder="Contoh: Blok 10 A, Lantai 2" x:Name="catatan" FontFamily="OpenSans-Regular"  FontSize="12"/>
                 <maps:Map x:Name="map" IsShowingUser="true" HeightRequest="350"/>
                 <Grid Margin="5">
-                    <Button Text="Simpan" Grid.Column="0" Clicked="Update_Clicked" TextColor="White" BackgroundColor="#57ba7d" CornerRadius="10"/>
-                    <Button Text="Cancel" Grid.Column="1" Clicked="Logout_Clicked" TextColor="White" BackgroundColor="Red" CornerRadius="10"/>
+                    <Button Text="Simpan" Grid.Column="0" Clicked="Save_Clicked" TextColor="White" BackgroundColor="#57ba7d" CornerRadius="10"/>
+                    <Button Text="Cancel" Grid.Column="1" Clicked="Back_Clicked" TextColor="White" BackgroundColor="Red" CornerRadius="10"/>
                 </Grid>
             </StackLayout>
         </ScrollView>
