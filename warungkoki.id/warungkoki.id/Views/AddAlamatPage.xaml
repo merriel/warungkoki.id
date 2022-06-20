@@ -30,16 +30,13 @@
             <StackLayout Padding="20">
                 <Label Text="Alamat Anda" FontFamily="OpenSansSemibold" FontSize="25" FontAttributes="Bold"></Label>
                 <Label Text="Judul Alamat" FontFamily="OpenSans-Regular" FontSize="15" FontAttributes="Bold"></Label>
-                <Entry Placeholder="Contoh:Alamat Rumah, Alamat Kantor" x:Name="name"  FontFamily="OpenSans-Regular" FontSize="12"></Entry>
+                <Entry Placeholder="Contoh:Alamat Rumah, Alamat Kantor" x:Name="judul"  FontFamily="OpenSans-Regular" FontSize="12"></Entry>
                 <Label Text="Pilih Provinsi" FontFamily="OpenSans-Regular"  FontSize="15" FontAttributes="Bold"></Label>
-                <Picker x:Name="picker_provinsi" ItemsSource="{Binding List_Provinsi}" Title="Pilih Provinsi" SelectedItem="{Binding 
-                        Selected_Provinsi, Mode=TwoWay}"/>
+                <Picker x:Name="picker_provinsi" Title="Pilih Provinsi" ItemDisplayBinding="{Binding name}" SelectedIndexChanged="picker_provinsi_SelectedIndexChanged" />
                 <Label Text="Pilih Kota/Kabupaten" FontFamily="OpenSans-Regular" FontSize="15" FontAttributes="Bold" />
-                <Picker x:Name="picker_kota" Title="Pilih Kota/Kabupaten" SelectedItem="{Binding 
-                        Selected_Kota, Mode=TwoWay}" ItemsSource="{Binding List_Kota}" />
+                <Picker x:Name="picker_kota" Title="Pilih Kota/Kabupaten" ItemDisplayBinding="{Binding name}" SelectedIndexChanged="picker_kota_SelectedIndexChanged" />
                 <Label Text="Pilih Kecamatan" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold" ></Label>
-                <Picker x:Name="picker_kecamatan" Title="Pilih Kecamatan/Desa" ItemsSource="{Binding List_Kecamatan}" SelectedItem="{Binding 
-                        Selected_Kecamatan, Mode=TwoWay}" />
+                <Picker x:Name="picker_kecamatan" Title="Pilih Kecamatan/Desa" ItemDisplayBinding="{Binding name}" SelectedIndexChanged="picker_kecamatan_SelectedIndexChanged" />
                 <Label Text="Nama Penerima" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold"></Label>
                 <Entry Placeholder="Contoh: Dodi, Agus" x:Name="penerima" FontFamily="OpenSans-Regular"  FontSize="12"/>
                 <Label Text="Nomor HP Penerima" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold"></Label>
@@ -48,7 +45,7 @@
                 <Entry x:Name="alamat_lengkap" FontFamily="OpenSans-Regular"  FontSize="12" />
                 <Label Text="Catatan Tambahan Alamat" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold"></Label>
                 <Entry Placeholder="Contoh: Blok 10 A, Lantai 2" x:Name="catatan" FontFamily="OpenSans-Regular"  FontSize="12"/>
-                <maps:Map x:Name="map" IsShowingUser="true" HeightRequest="350"/>
+                <maps:Map x:Name="map" IsShowingUser="true" HeightRequest="350" MoveToLastRegionOnLayoutChange="False"/>
                 <Grid Margin="5">
                     <Button Text="Simpan" Grid.Column="0" Clicked="Save_Clicked" TextColor="White" BackgroundColor="#57ba7d" CornerRadius="10"/>
                     <Button Text="Cancel" Grid.Column="1" Clicked="Back_Clicked" TextColor="White" BackgroundColor="Red" CornerRadius="10"/>

@@ -34,5 +34,7 @@
     <string>warungkoki.id</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app wants to know your current Location info.</string>
 </dict>
 </plist>
