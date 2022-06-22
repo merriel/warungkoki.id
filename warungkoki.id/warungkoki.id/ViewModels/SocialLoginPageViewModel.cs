@@ -239,7 +239,7 @@ namespace warungkoki.id.ViewModels
                                 Name = e.Data.Name,
                             };
                             Application.Current.Properties["Username"] = socialLoginData.Name;
-                            LoginUserAsync(e.Data.Email);
+                            await LoginUserAsync(e.Data.Email, e.Data.Name, e.Data.Id);
                             await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                             break;
                         case GoogleActionStatus.Canceled:
@@ -265,7 +265,8 @@ namespace warungkoki.id.ViewModels
                 Debug.WriteLine(ex.ToString());
             }
         }
-        public async Task LoginUserAsync(string email)
+
+        public async Task LoginUserAsync(string email, string name, string id)
         {
             try
             {
@@ -277,7 +278,7 @@ namespace warungkoki.id.ViewModels
                 var jsonString = JsonConvert.SerializeObject(data);
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                 var myHttpClient = new HttpClient();
-                Uri uri = new Uri("http://elcapersada.com/warungkoki/android/login_user.php" + "?email=" + email);
+                Uri uri = new Uri("http://elcapersada.com/warungkoki/android/login_user.php" + "?email=" + email + "&name=" + name + "&google_id=" + id);
                 var response = await myHttpClient.GetStringAsync(uri);
                 System.Diagnostics.Debug.WriteLine(response);
                 if (response != "[]")

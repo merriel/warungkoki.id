@@ -31,10 +31,48 @@ namespace warungkoki.id.Views
         }
 
         IOAuth2Service auth;
-       
+        public string ID;
         private async void Save_Clicked(object sender, EventArgs e)
         {
-          //  judul.Text,
+            if (Application.Current.Properties.ContainsKey("ID") && Application.Current.Properties["ID"] != null && district_id != 0 
+                && loc_now.Longitude.ToString() != null && loc_now.Latitude.ToString() != null)
+            {
+                ID = Application.Current.Properties["ID"].ToString();
+               await  add_alamat(judul.Text.ToString(), district_id, ID, alamat_lengkap.Text.ToString(), penerima.Text.ToString(),
+                        nohp_penerima.Text.ToString(), loc_now.Latitude.ToString(), loc_now.Longitude.ToString(), catatan.Text.ToString());
+            }
+            
+        }
+
+        public async Task add_alamat(string judul,int district_id, string user_id, string alamat, string penerima, string nohp, string loc_long,
+                                     string loc_lat, string catatan)
+        {
+            try
+            {
+
+                var myHttpClient = new HttpClient();
+                Uri uri = new Uri("http://elcapersada.com/warungkoki/android/alamatuser_add.php" + "?judul=" + judul + "&district_id=" + district_id
+                                    + "&user_id=" + user_id + "&alamat=" + alamat + "&penerima=" + penerima + "&nohp=" + nohp 
+                                    + "&long=" + loc_long + "&lat=" + loc_lat + "&note=" + catatan);
+                var response = await myHttpClient.GetStringAsync(uri);
+
+                if (response.Contains("sukses"))
+                {
+                   // await Application.Current.MainPage.DisplayAlert(null, "Sukses simpan data", "ok");
+                    await Navigation.PopAsync();
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert(null, response, "ok");
+                }
+                myHttpClient.Dispose();
+            }
+
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("CAUGHT EXCEPTION:");
+                System.Diagnostics.Debug.WriteLine(e);
+            }
         }
 
         private async void Back_Clicked(object sender, EventArgs e)
@@ -79,7 +117,7 @@ namespace warungkoki.id.Views
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert(null, "Email not found, please register", "ok");
+                    await Application.Current.MainPage.DisplayAlert(null, "Data not found", "ok");
                 }
                 myHttpClient.Dispose();
             }
@@ -162,7 +200,7 @@ namespace warungkoki.id.Views
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert(null, "Email not found, please register", "ok");
+                    await Application.Current.MainPage.DisplayAlert(null, "Data not found", "ok");
                 }
                 myHttpClient.Dispose();
             }
@@ -212,7 +250,7 @@ namespace warungkoki.id.Views
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert(null, "Email not found, please register", "ok");
+                    await Application.Current.MainPage.DisplayAlert(null, "Data not found", "ok");
                 }
                 myHttpClient.Dispose();
             }
@@ -224,34 +262,7 @@ namespace warungkoki.id.Views
             }
         }
 
-        public async Task update_profile(string id, string name, string no_hp,string email, string ktp, string pin)
-        {
-            try
-            {
-
-                var myHttpClient = new HttpClient();
-                Uri uri = new Uri("http://elcapersada.com/warungkoki/android/profile_update.php" + "?id=" + id +
-                    "&name=" + name +"&email="+ email + "&no_hp="+no_hp + "&ktp="+ ktp+ "&token=" +pin);
-                var response = await myHttpClient.GetStringAsync(uri);
-                if (!response.Contains("gagal"))
-                {
-                    await Application.Current.MainPage.DisplayAlert("Alert", "Update success", "ok");
-
-                    Navigation.PopAsync();
-                }
-                else
-                {
-                    await Application.Current.MainPage.DisplayAlert(null, "Email not found, please register", "ok");
-                }
-                myHttpClient.Dispose();
-            }
-
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("CAUGHT EXCEPTION:");
-                System.Diagnostics.Debug.WriteLine(e);
-            }
-        }
+       
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -283,6 +294,8 @@ namespace warungkoki.id.Views
             }
         }
 
+        public int district_id = 0;
+
         private void picker_kecamatan_SelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
@@ -291,11 +304,12 @@ namespace warungkoki.id.Views
             if (selectedIndex != -1)
             {
                 var selectedItem = (Kecamatan)picker.SelectedItem;
-
+                district_id = selectedItem.id;
             }
         }
 
         CancellationTokenSource cts;
+        private Location loc_now;
         public async Task get_location()
         {
                 try
@@ -307,6 +321,7 @@ namespace warungkoki.id.Views
                     if (location != null)
                     {
                     await NavigateToLocation(location);
+                    loc_now = location;
                     }
                 }
                 catch (FeatureNotSupportedException fnsEx)
@@ -350,5 +365,6 @@ namespace warungkoki.id.Views
                 // No map application available to open
             }
         }
+
     }
 }

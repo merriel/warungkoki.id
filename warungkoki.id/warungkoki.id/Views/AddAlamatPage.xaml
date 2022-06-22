@@ -42,7 +42,7 @@
                 <Label Text="Nomor HP Penerima" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold"></Label>
                 <Entry Placeholder="Contoh: 081320320320" x:Name="nohp_penerima" FontFamily="OpenSans-Regular" Keyboard="Telephone"  FontSize="12"/>
                 <Label Text="Alamat Lengkap Anda" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold"></Label>
-                <Entry x:Name="alamat_lengkap" FontFamily="OpenSans-Regular"  FontSize="12" />
+                <Entry x:Name="alamat_lengkap"  FontFamily="OpenSans-Regular"  FontSize="12" />
                 <Label Text="Catatan Tambahan Alamat" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold"></Label>
                 <Entry Placeholder="Contoh: Blok 10 A, Lantai 2" x:Name="catatan" FontFamily="OpenSans-Regular"  FontSize="12"/>
                 <maps:Map x:Name="map" IsShowingUser="true" HeightRequest="350" MoveToLastRegionOnLayoutChange="False"/>
