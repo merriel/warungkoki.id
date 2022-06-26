@@ -49,10 +49,10 @@
             <ShellContent Route="ScanPage" ContentTemplate="{DataTemplate local:ScanPage}" />
         </Tab>
         <Tab Title="Transaksi" Icon="transaction_ic.png" >
-            <ShellContent Route="TransactionPage" ContentTemplate="{DataTemplate local:TransactionPageNew}" />
+            <ShellContent Route="TransaksiPage" ContentTemplate="{DataTemplate local:TransaksiPage}" />
         </Tab>
         <Tab Title="Favorit" Icon="star_ic.png">     
-        <ShellContent  Route="FavPage" ContentTemplate="{DataTemplate local:TransactionPageNew}" />
+        <ShellContent  Route="FavPage" ContentTemplate="{DataTemplate local:FavPage}" />
         </Tab>
     </c:TodoTabBar>
 

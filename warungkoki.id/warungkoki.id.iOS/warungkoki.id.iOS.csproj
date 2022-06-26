@@ -299,4 +299,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\empty.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\favoritempty.jpeg" />
+  </ItemGroup>
 </Project>

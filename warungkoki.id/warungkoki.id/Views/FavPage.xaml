@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="warungkoki.id.Views.FavPage"
+             BackgroundColor="WhiteSmoke">
+    <Shell.TitleView>
+        <Grid BackgroundColor="{StaticResource Primary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="email.png"
+                         HorizontalOptions="Start"
+                         HeightRequest="25"
+                         WidthRequest="25" BackgroundColor="Transparent" Grid.Column="0" />
+            <Image Source="titlebar.jpeg" Grid.Column="1"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="Center" Margin="0,10,10,10" />
+        </Grid>
+    </Shell.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profil" Order="Secondary" />
+        <ToolbarItem Text="Alamat" Order="Secondary" />
+        <ToolbarItem Text="History Saldo Warungkoki" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="5">
+            <Label Text="Favorit Anda"
+                HorizontalOptions="StartAndExpand" Margin="20,50,20,0" FontSize="Large" FontAttributes="Bold"/>
+           
+            <ListView   x:Name="listView" Grid.Row="1" IsVisible="true"
+                    HasUnevenRows="true" SeparatorVisibility="None" 
+                        Margin="20">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <StackLayout>
+                                <Frame CornerRadius="10" Margin="10">
+                                    <Grid BackgroundColor="White">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="25"/>
+                                            <RowDefinition Height="50"/>
+                                            <RowDefinition Height="25"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.RowSpan="3" VerticalOptions="Center" >
+                                            <Frame CornerRadius="60"  BackgroundColor="#57ba7d" Padding="10" >
+                                                <Image 
+                                        HeightRequest="25" WidthRequest="25" Aspect="AspectFit" 
+							            x:Name="image" VerticalOptions="Center"
+                                        Source="alamat.png" Margin="-5"/>
+                                            </Frame>
+                                        </StackLayout>
+                                        <Label
+                                            VerticalOptions="StartAndExpand"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="{Binding judul}"
+                                            TextColor="Red"
+                                            VerticalTextAlignment="Center" 
+                                            Grid.Row="0" Grid.Column="1"/>
+                                        <Grid Grid.Row="1" Grid.Column="1">
+                                            <Label
+                                            VerticalOptions="StartAndExpand"
+                                            FontAttributes="Bold"
+                                            FontSize="Micro"
+                                            Grid.Column="0"    
+                                            Text="{Binding nama_user}"
+                                            TextColor="Black"
+                                            VerticalTextAlignment="Center" 
+                                            />
+                                            <Label
+                                            VerticalOptions="StartAndExpand"
+                                            FontAttributes="Bold"
+                                            FontSize="Micro"
+                                            Grid.Column="1"
+                                            Text="{Binding no_hp}"
+                                            TextColor="Black"
+                                            VerticalTextAlignment="Center" 
+                                            />
+                                        </Grid>
+                                        <Label
+                                            VerticalOptions="StartAndExpand"
+                                            FontAttributes="None"
+                                            FontSize="Micro"
+                                            Text="{Binding alamat}"
+                                            TextColor="Black"
+                                            VerticalTextAlignment="Center" 
+                                            Grid.Row="2" Grid.Column="1"/>
+                                        <Label
+                                            VerticalOptions="StartAndExpand"
+                                            FontAttributes="Italic"
+                                            FontSize="Micro"
+                                            Text="Ini merupakan Alamat UTAMA Anda"
+                                            TextColor="Black"
+                                            VerticalTextAlignment="Center" HorizontalOptions="Center"
+                                            Grid.Row="3" Grid.ColumnSpan="2"/>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout x:Name="emptyFav"  Grid.Row="1" IsVisible="false" Margin="20">
+                <Image Source="favoritempty.jpeg" HeightRequest="120" WidthRequest="120"/>
+                <Label Text="Kosong!" FontAttributes="Bold" FontSize="Small" HorizontalOptions="Center"/>
+                <Label Text="Anda belum memiliki barang favorit" FontSize="Micro" HorizontalOptions="Center"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

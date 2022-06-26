@@ -349,10 +349,13 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\empty.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\favoritempty.jpeg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadGenericExceptionInfoBarwarungkokiidAndroidHideInfoBar="True" XamarinHotReloadDebuggerTimeoutExceptionwarungkokiidAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionwarungkokiidAndroidHideInfoBar="True" XamarinHotReloadGenericExceptionInfoBarwarungkokiidAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

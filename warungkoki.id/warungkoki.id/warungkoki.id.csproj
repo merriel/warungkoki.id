@@ -77,6 +77,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\FavPage.xaml.cs">
+      <DependentUpon>FavPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TransaksiPage.xaml.cs">
+      <DependentUpon>TransaksiPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\AlamatPage.xaml.cs">
       <DependentUpon>AlamatPage.xaml</DependentUpon>
     </Compile>
@@ -95,14 +101,14 @@
     <Compile Update="Views\HomePageNew.xaml.cs">
       <DependentUpon>HomePageNew.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\TransactionPage.xaml.cs">
-      <DependentUpon>TransactionPage.xaml</DependentUpon>
+    <Compile Update="Views\HistorySaldoPage.xaml.cs">
+      <DependentUpon>HistorySaldoPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\CartPage.xaml.cs">
       <DependentUpon>CartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\TransactionPageNew.xaml.cs">
-      <DependentUpon>TransactionPageNew.xaml</DependentUpon>
+    <Compile Update="Views\HistorySaldoPageNew.xaml.cs">
+      <DependentUpon>HistorySaldoPageNew.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 

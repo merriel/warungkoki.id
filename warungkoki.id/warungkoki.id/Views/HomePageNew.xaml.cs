@@ -52,7 +52,7 @@ namespace warungkoki.id.Views
 
         private void Saldo_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new TransactionPageNew());
+            Navigation.PushAsync(new TransactionPage());
         }
     }
 }
