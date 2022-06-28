@@ -31,7 +31,7 @@ namespace warungkoki.id.Views
 
         private async void Add_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddAlamatPage());
+            await Navigation.PushAsync(new AddAlamatPage());
         }
 
         private string user;
@@ -56,19 +56,21 @@ namespace warungkoki.id.Views
                 var myHttpClient = new HttpClient();
                 Uri uri = new Uri("http://elcapersada.com/warungkoki/android/alamatuser.php" + "?id=" + id);
                 var response = await myHttpClient.GetStringAsync(uri);
-                System.Diagnostics.Debug.WriteLine(response);
+                
                 if ( !response.Contains("NULL"))
                 {
-                    //string result = response.Substring(1);
-                    var json = JsonConvert.DeserializeObject<List<Alamat>>(response);
+                    string result = response.Substring(1);
+                    System.Diagnostics.Debug.WriteLine(response);
+                    var json = JsonConvert.DeserializeObject<List<Alamat>>(result);
                     foreach (Alamat item in json)
                     {
                         data.Add(new Alamat
                         {
                             user_id = id,
-                            no_hp = item.no_hp,
+                            nohp = item.nohp,
                             judul = item.judul,
-                            alamat = item.alamat
+                            alamat = item.alamat,
+                            penerima = item.penerima
                         });
 
                     }

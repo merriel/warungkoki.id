@@ -302,4 +302,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\favoritempty.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scooter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\takeaway.png" />
+  </ItemGroup>
 </Project>

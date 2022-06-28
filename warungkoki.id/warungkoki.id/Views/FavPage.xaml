@@ -26,9 +26,9 @@
     <ContentPage.Content>
         <StackLayout Margin="5">
             <Label Text="Favorit Anda"
-                HorizontalOptions="StartAndExpand" Margin="20,50,20,0" FontSize="Large" FontAttributes="Bold"/>
+                HorizontalOptions="StartAndExpand" Margin="20,50,20,0" FontSize="Large" FontAttributes="None"/>
            
-            <ListView   x:Name="listView" Grid.Row="1" IsVisible="true"
+            <ListView   x:Name="listView" Grid.Row="1" IsVisible="false"
                     HasUnevenRows="true" SeparatorVisibility="None" 
                         Margin="20">
                 <ListView.ItemTemplate>
@@ -107,8 +107,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackLayout x:Name="emptyFav"  Grid.Row="1" IsVisible="false" Margin="20">
-                <Image Source="favoritempty.jpeg" HeightRequest="120" WidthRequest="120"/>
+            <StackLayout x:Name="emptyFav"  Grid.Row="1" IsVisible="true" Margin="20">
+                <Image Source="favoritempty.jpeg" HeightRequest="300" HorizontalOptions="FillAndExpand"/>
                 <Label Text="Kosong!" FontAttributes="Bold" FontSize="Small" HorizontalOptions="Center"/>
                 <Label Text="Anda belum memiliki barang favorit" FontSize="Micro" HorizontalOptions="Center"/>
             </StackLayout>

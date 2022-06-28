@@ -26,7 +26,7 @@
     <ContentPage.Content>
         <StackLayout Margin="5">
             <Label Text="Transaksi Anda"
-                HorizontalOptions="StartAndExpand" Margin="20,50,20,0" FontSize="Large" FontAttributes="Bold"/>
+                HorizontalOptions="StartAndExpand" Margin="20,50,20,0" FontSize="Large" FontAttributes="None"/>
             
             <ListView   x:Name="listView" Grid.Row="1" IsVisible="False"
                     HasUnevenRows="true" SeparatorVisibility="None" 

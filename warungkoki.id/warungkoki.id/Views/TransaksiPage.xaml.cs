@@ -66,7 +66,7 @@ namespace warungkoki.id.Views
                         data.Add(new Alamat
                         {
                             user_id = id,
-                            no_hp = item.no_hp,
+                            nohp = item.nohp,
                             judul = item.judul,
                             alamat = item.alamat
                         });

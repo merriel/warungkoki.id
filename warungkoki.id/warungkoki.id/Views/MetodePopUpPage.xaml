@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    x:Class="warungkoki.id.Views.MetodePopUpPage">
+    <!--You can set an animation in the xaml file or in the csharp code behind-->
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <!--You can use any elements here which are extended from Xamarin.Forms.View-->
+    <Frame 
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" 
+        Padding="20, 20, 20, 20" Margin="20"
+        BackgroundColor="WhiteSmoke" CornerRadius="20">
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Pilih Metode"
+                       VerticalOptions="StartAndExpand"
+                       FontAttributes="Bold"
+                       FontSize="15"
+                       Grid.Column="0"/>
+                <Button Text="X"
+                        FontAttributes="Bold"
+                        Grid.Column="1" Padding="0"
+                        TextColor="Black"
+                        BackgroundColor="White"/>
+            </Grid>
+            <Frame CornerRadius="20" BackgroundColor="LightGoldenrodYellow" Margin="0,10,0,10">
+                <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Source="takeaway.png" Grid.Column="0" Grid.RowSpan="2" Margin="10"/>
+                <Label Text="Ambil di Lokasi"
+                       VerticalOptions="StartAndExpand"
+                       FontAttributes="Bold"
+                       FontSize="15"
+                       Grid.Column="1"
+                       Grid.Row="0"/>
+                <Label Text="Melakukan Pengambilan ke Lokasi dengan menunjukan QR CODE Transaksi ke Petugas kami"
+                       VerticalOptions="StartAndExpand"
+                       FontAttributes="None"
+                       FontSize="10"
+                       MaxLines="4"
+                       Grid.Column="1"
+                       Grid.Row="1"/>
+                </Grid>
+            </Frame>
+            <Frame CornerRadius="20" BackgroundColor="White" Margin="0,10,0,0">
+                <Grid Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="scooter.png" Grid.Column="0" Grid.RowSpan="2" Margin="10"/>
+                    <Label Text="Ambil di Lokasi"
+                       VerticalOptions="StartAndExpand"
+                       FontAttributes="Bold"
+                       FontSize="15"
+                       Grid.Column="1"
+                       Grid.Row="0"/>
+                    <Label Text="Melakukan Pengambilan ke Lokasi dengan menunjukan QR CODE Transaksi ke Petugas kami"
+                       VerticalOptions="StartAndExpand"
+                       FontAttributes="None"
+                       FontSize="10"
+                       MaxLines="4"
+                       Grid.Column="1"
+                       Grid.Row="1"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </Frame>
+</pages:PopupPage>

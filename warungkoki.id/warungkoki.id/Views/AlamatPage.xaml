@@ -73,7 +73,7 @@
                                             FontAttributes="Bold"
                                             FontSize="Micro"
                                             Grid.Column="0"    
-                                            Text="{Binding nama_user}"
+                                            Text="{Binding penerima}"
                                             TextColor="Black"
                                             VerticalTextAlignment="Center" 
                                             />
@@ -82,7 +82,7 @@
                                             FontAttributes="Bold"
                                             FontSize="Micro"
                                             Grid.Column="1"
-                                            Text="{Binding no_hp}"
+                                            Text="{Binding nohp}"
                                             TextColor="Black"
                                             VerticalTextAlignment="Center" 
                                             />
