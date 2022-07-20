@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using warungkoki.id.Models;
+using warungkoki.id.Services;
 using warungkoki.id.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -28,5 +29,12 @@ namespace warungkoki.id.Views
             Debug.WriteLine(control.SelectedItem);
         }
 
+        private async void lovebuton_Clicked(object sender, EventArgs e)
+        {
+            var fav_like = (Favorit)BindingContext;
+            TodoItemDatabase database = await TodoItemDatabase.Instance;
+            await database.SaveItemAsync(fav_like);
+            //change color love button
+        }
     }
 }

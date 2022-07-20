@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="warungkoki.id.Views.PembayaranPage"
+             BackgroundColor="WhiteSmoke">
+    <Shell.TitleView>
+        <Grid BackgroundColor="{StaticResource Primary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="email.png"
+                         HorizontalOptions="Start"
+                         HeightRequest="25"
+                         WidthRequest="25" BackgroundColor="Transparent" Grid.Column="0" />
+            <Image Source="titlebar.jpeg" Grid.Column="1"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="Center" Margin="0,10,10,10" />
+        </Grid>
+    </Shell.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profil" Order="Secondary" />
+        <ToolbarItem Text="Alamat" Order="Secondary" />
+        <ToolbarItem Text="History Saldo Warungkoki" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="5">
+            <Label Text="Pembayaran"
+                HorizontalOptions="StartAndExpand" Margin="20,20,20,0" FontSize="28" FontAttributes="None"/>
+            <Frame CornerRadius="20" Margin="20" BackgroundColor="#57ba7d" Padding="10" HeightRequest="30">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Saldo WarungKoki :" FontSize="10" TextColor="White" VerticalOptions="Center" HorizontalTextAlignment="Center" Grid.Column="0"/>
+                    <Label x:Name="saldo" FontSize="10" Text="Rp.0" TextColor="White" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Start" Grid.Column="1"/>
+                    <Button Clicked="Add_Clicked" BackgroundColor="White" Text="Isi Saldo" Margin="2" FontAttributes="Bold" CornerRadius="5" Padding="0" TextColor="Black" FontSize="10" Grid.Column="2"/>
+                </Grid>
+            </Frame>
+
+            <Frame CornerRadius="10" BackgroundColor="White" Margin="20,20,20,10" Padding="10" HeightRequest="35">
+                <Grid>
+                    <Image Source="handshake.png" HorizontalOptions="Start" Grid.Column="0" Margin="20,0,0,0"/>
+                    <Label Text="Pembayaran melalui Kasir" TextColor="Black" FontAttributes="Bold" FontSize="10" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                </Grid>
+            </Frame>
+            <Frame CornerRadius="10" BackgroundColor="White" Margin="20,10,20,10" Padding="10" HeightRequest="35">
+                <Grid>
+                    <Image Source="gopay.png" HeightRequest="40" WidthRequest="60" HorizontalOptions="Start" Grid.Column="0" Margin="20,0,0,0"/>
+                    <Label Text="GO-PAY" TextColor="Black" FontAttributes="Bold" FontSize="10" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                </Grid>
+            </Frame>
+            <Frame CornerRadius="10" BackgroundColor="White" Margin="20,10,20,10" Padding="10" HeightRequest="35">
+                <Grid>
+                    <Image Source="ovo.png" HeightRequest="25" HorizontalOptions="Start" Grid.Column="0" Margin="20,0,0,0"/>
+                    <Label Text="OVO" TextColor="Black" FontAttributes="Bold" FontSize="10" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                </Grid>
+            </Frame>
+            <Frame CornerRadius="10" BackgroundColor="White" Margin="20,10,20,10" Padding="10" HeightRequest="35">
+                <Grid>
+                    <Image Source="titlebar.jpeg" HeightRequest="30" HorizontalOptions="Start" Grid.Column="0" Margin="20,0,0,0"/>
+                    <Label Text="Saldo WarungKoki" TextColor="Black" FontAttributes="Bold" FontSize="10" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

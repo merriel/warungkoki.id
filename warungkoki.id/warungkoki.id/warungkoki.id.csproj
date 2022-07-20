@@ -80,6 +80,9 @@
     <Compile Update="Views\FavPage.xaml.cs">
       <DependentUpon>FavPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PembayaranPage.xaml.cs">
+      <DependentUpon>PembayaranPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\TransaksiPage.xaml.cs">
       <DependentUpon>TransaksiPage.xaml</DependentUpon>
     </Compile>

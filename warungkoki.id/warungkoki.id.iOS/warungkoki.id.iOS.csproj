@@ -311,4 +311,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\takeaway.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\warung.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\handshake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gopay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ovo.png" />
+  </ItemGroup>
 </Project>

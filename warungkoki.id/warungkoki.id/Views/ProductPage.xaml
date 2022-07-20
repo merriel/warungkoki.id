@@ -35,7 +35,7 @@
           
         </Grid.RowDefinitions>
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Grid.Row="0" Margin="20,10,20,0">
-            <ImageButton Source="fav_ic.png" BackgroundColor="Transparent" x:Name="lovebuton" HorizontalOptions="EndAndExpand" Margin="0,0,20,0"/>
+            <ImageButton Source="fav_ic.png" BackgroundColor="Transparent" x:Name="lovebuton" Clicked="lovebuton_Clicked" HorizontalOptions="EndAndExpand" Margin="0,0,20,0"/>
             <ImageButton Source="share_ic.png" BackgroundColor="Transparent" x:Name="sharebutton" HorizontalOptions="End"/>
         </StackLayout>
 

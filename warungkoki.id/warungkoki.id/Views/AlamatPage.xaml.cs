@@ -48,6 +48,20 @@ namespace warungkoki.id.Views
             }
         }
 
+        private string utama;
+        public string utamatext
+        {
+            set
+            {
+                utama = value;
+                OnPropertyChanged("utamatext");
+            }
+            get
+            {
+                return utama;
+            }
+        }
+
         public async Task get_alamat(string id)
         {
             try
@@ -70,10 +84,12 @@ namespace warungkoki.id.Views
                             nohp = item.nohp,
                             judul = item.judul,
                             alamat = item.alamat,
-                            penerima = item.penerima
+                            penerima = item.penerima,
+                            utama = item.utama
                         });
-
+                       
                     }
+                    
                     listView.ItemsSource = data;
                 }
                 else {

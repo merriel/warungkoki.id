@@ -91,6 +91,20 @@ namespace warungkoki.id.ViewModels
             }
         }
 
+        private int last_saldo;
+        public int saldo_last
+        {
+            set
+            {
+                last_saldo = value;
+                OnPropertyChanged("saldo_last");
+            }
+            get
+            {
+                return last_saldo;
+            }
+        }
+
         Product _selectedItem;
         public Product SelectedItem
         {
@@ -197,6 +211,40 @@ namespace warungkoki.id.ViewModels
                 System.Diagnostics.Debug.WriteLine(e);
             }
         }
+
+        public async void get_saldo(string id)
+        {
+            try
+            {
+
+                var myHttpClient = new HttpClient();
+                Uri uri = new Uri("http://elcapersada.com/warungkoki/android/saldohistorytotal.php" + "?id=" + id);
+                var response = await myHttpClient.GetStringAsync(uri);
+
+                if (response != "[]" || !response.Equals("NULL"))
+                {
+                    //string result = response.Substring(1);
+                    var json = JsonConvert.DeserializeObject<List<Saldo>>(response);
+                    foreach (Saldo item in json)
+                    {
+                        saldo_last = int.Parse( item.sisa);
+
+                    }
+                }
+                else
+                {
+                    saldo_last = 0;
+                }
+                myHttpClient.Dispose();
+            }
+
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("CAUGHT EXCEPTION:");
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+        }
+
         public INavigation Navigation { get; set; }
     }
 }

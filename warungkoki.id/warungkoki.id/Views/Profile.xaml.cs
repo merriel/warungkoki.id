@@ -23,7 +23,9 @@ namespace warungkoki.id.Views
             if (Application.Current.Properties["ID"] != null)
             {
                 id = Application.Current.Properties["ID"].ToString();
+                get_saldo(id);
                 get_profile(id);
+                
             }
         }
 
@@ -102,6 +104,38 @@ namespace warungkoki.id.Views
                 else
                 {
                     await Application.Current.MainPage.DisplayAlert(null, "Email not found, please register", "ok");
+                }
+                myHttpClient.Dispose();
+            }
+
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("CAUGHT EXCEPTION:");
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+        }
+        public async Task get_saldo(string id)
+        {
+            try
+            {
+
+                var myHttpClient = new HttpClient();
+                Uri uri = new Uri("http://elcapersada.com/warungkoki/android/saldohistorytotal.php" + "?id=" + id);
+                var response = await myHttpClient.GetStringAsync(uri);
+                System.Diagnostics.Debug.WriteLine("Hasil : " + response);
+                if (response != "[]" && !response.Equals("NULL"))
+                {
+                    //string result = response.Substring(1);
+                    var json = JsonConvert.DeserializeObject<List<Saldo>>(response);
+                    foreach (Saldo item in json)
+                    {
+                        saldo_last.Text = "Rp. " + item.sisa;
+
+                    }
+                }
+                else
+                {
+                    saldo_last.Text = "Rp. 0";
                 }
                 myHttpClient.Dispose();
             }

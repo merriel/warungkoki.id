@@ -7,7 +7,7 @@ namespace warungkoki.id.Services
 {
     public static class Constants
     {
-        public const string DatabaseFilename = "CartSQLite.db3";
+        public const string DatabaseFilename = "warungSQLite.db3";
 
         public const SQLite.SQLiteOpenFlags Flags =
             // open the database in read/write mode
