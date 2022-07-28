@@ -373,10 +373,13 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ovo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\redheart.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionwarungkokiidAndroidHideInfoBar="True" XamarinHotReloadGenericExceptionInfoBarwarungkokiidAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadGenericExceptionInfoBarwarungkokiidAndroidHideInfoBar="True" XamarinHotReloadDebuggerTimeoutExceptionwarungkokiidAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

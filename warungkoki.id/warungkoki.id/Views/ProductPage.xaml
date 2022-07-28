@@ -35,15 +35,17 @@
           
         </Grid.RowDefinitions>
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Grid.Row="0" Margin="20,10,20,0">
-            <ImageButton Source="fav_ic.png" BackgroundColor="Transparent" x:Name="lovebuton" Clicked="lovebuton_Clicked" HorizontalOptions="EndAndExpand" Margin="0,0,20,0"/>
+                <ImageButton Source="{Binding ic_source}" BackgroundColor="Transparent" x:Name="lovebuton"  Command="{Binding favorit_command}" HorizontalOptions="EndAndExpand" Margin="0,0,20,0"/>
             <ImageButton Source="share_ic.png" BackgroundColor="Transparent" x:Name="sharebutton" HorizontalOptions="End"/>
         </StackLayout>
 
             <Frame Margin="20,0,20,20" CornerRadius="10" Grid.Row="1">
                 <StackLayout Orientation="Vertical">
-                    <ffimageloading:CachedImage HeightRequest="380" Aspect="AspectFill" DownsampleToViewSize = "true"
+                    <ffimageloading:CachedImage HeightRequest="380"
+                                                Aspect="AspectFill" DownsampleToViewSize = "true"
 							LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png"
-							x:Name="image" Source="{Binding SelectedImage}" Margin="-20, -20,-20,0"/>
+							x:Name="image" Source="{Binding SelectedImage}" Margin="-20, -20,-20,0">
+                    </ffimageloading:CachedImage>
                     <Label Text="{Binding Name}" TextColor="Black" FontFamily="OpenSansSemibold" FontAttributes="Bold" FontSize="Medium"/>
 
                     <StackLayout Orientation="Horizontal" Margin="10">

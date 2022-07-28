@@ -15,11 +15,13 @@ namespace warungkoki.id.Views
     public partial class ProductPage : ContentPage
     {
         Product prod;
+        ProductViewModel prod_vm;
         public ProductPage(Product product)
         {
             this.prod = product;
             InitializeComponent();
             BindingContext = new ProductViewModel(prod);
+
             //image.SetBinding(sourceProperty)
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
@@ -29,12 +31,6 @@ namespace warungkoki.id.Views
             Debug.WriteLine(control.SelectedItem);
         }
 
-        private async void lovebuton_Clicked(object sender, EventArgs e)
-        {
-            var fav_like = (Favorit)BindingContext;
-            TodoItemDatabase database = await TodoItemDatabase.Instance;
-            await database.SaveItemAsync(fav_like);
-            //change color love button
-        }
+       
     }
 }

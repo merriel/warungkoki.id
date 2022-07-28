@@ -186,13 +186,16 @@ namespace warungkoki.id.ViewModels
 
                     foreach (Product item in json)
                     {
-                        ListProduct.Add(new Product { id = item.id, user_id = item.user_id, 
+                        ListProduct.Add(new Product { id = item.id, user_id = item.user_id, wil_id = item.wil_id,
                             kategori_id= item.kategori_id, product_id = item.product_id, code_id = item.code_id,
-                            img = "http://elcapersada.com/warungkoki/android/img_post/" +item.img, type= item.type, jenis = item.jenis, banyaknya = item.banyaknya,
-                            desc = item.desc, min_qty = item.min_qty, judul_promo = item.judul_promo,
-                        harga_act = item.harga_act, harga_crt= item.harga_crt, active = item.active, 
-                        prod_name = item.prod_name, wilayah_name = "Barang ini tersedia dan bisa anda dapatkan di "+ item.wilayah_name, regency_name = item.regency_name,
-                        prod_img = "http://elcapersada.com/warungkoki/android/img_post/" + item.prod_img, uuid = item.uuid, alamat = item.alamat});
+                            img = "http://elcapersada.com/warungkoki/android/img_post/" +item.img, deliver = item.deliver,
+                            po = item.po , type= item.type, jenis = item.jenis, name = item.name, dari = item.dari, 
+                            sampai = item.sampai, dari_reward = item.dari_reward, sampai_reward = item.sampai_reward,
+                            banyaknya = item.banyaknya, desc = item.desc, min_qty = item.min_qty, max_qty = item.max_qty,
+                            judul_promo = item.judul_promo, harga_act = item.harga_act, harga_crt= item.harga_crt, active = item.active, 
+                            length = item.length,width = item.width, height= item.height, weight = item.weight,
+                            stock = item.stock, wilayah_name = "Barang ini tersedia dan bisa anda dapatkan di "+ item.wilayah_name, regency_name = item.regency_name,
+                            prod_img = "http://elcapersada.com/warungkoki/android/img_post/" + item.prod_img, uuid = item.uuid, alamat = item.alamat});
                     }
                     myHttpClient.Dispose();
                 }

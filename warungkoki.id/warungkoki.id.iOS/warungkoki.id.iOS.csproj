@@ -323,4 +323,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\ovo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\redheart.png" />
+  </ItemGroup>
 </Project>

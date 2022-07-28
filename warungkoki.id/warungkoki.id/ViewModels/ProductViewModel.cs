@@ -1,4 +1,11 @@
-﻿using warungkoki.id.Models;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using warungkoki.id.Models;
+using Xamarin.Forms;
 
 namespace warungkoki.id.ViewModels
 {
@@ -6,12 +13,26 @@ namespace warungkoki.id.ViewModels
     {
         Product product;
         string toko_name;
+        string id_user;
         public ProductViewModel(Product prod)
         {
             this.product = prod;
             toko_name = product.wilayah_name.Substring(46);
-        }
+            if (Application.Current.Properties["ID"] != null)
+            {
+                id_user = Application.Current.Properties["ID"].ToString();
+               
 
+            }
+            favorit_command = new Command(method1);
+            _ic_source = "fav_ic.png";
+        }
+        public async void method1()
+        {
+
+          await love_clicked(product.id, id_user);
+
+        }
         string _selectedImage;
         public string SelectedImage
         {
@@ -23,6 +44,20 @@ namespace warungkoki.id.ViewModels
             get
             {
                 return product.img;
+            }
+        }
+
+        private ImageSource _ic_source;
+        public ImageSource ic_source
+        {
+            set
+            {
+                _ic_source  = value;
+                OnPropertyChanged("ic_source");
+            }
+            get
+            {
+                return _ic_source;
             }
         }
 
@@ -79,6 +114,38 @@ namespace warungkoki.id.ViewModels
             get
             {
                 return product.harga_act;
+            }
+        }
+        public ICommand favorit_command { private set; get; }
+
+        public async Task love_clicked(string post_id, string user_id)
+        {
+            try
+            {
+
+                var myHttpClient = new HttpClient();
+                Uri uri = new Uri("http://elcapersada.com/warungkoki/android/favorite_masuk.php?" + "user_id="+user_id + "&post_id=" + post_id );
+
+                var response = await myHttpClient.GetStringAsync(uri);
+
+                if (response.Contains("sukses") )
+                {
+                    await Application.Current.MainPage.DisplayAlert("Berhasil", "Produk masuk ke dalam List Favorit", "ok");
+                    ic_source = "redheart.png";
+                }
+                else
+                {
+                    
+                    System.Diagnostics.Debug.WriteLine("KOSONG;");
+                    System.Diagnostics.Debug.WriteLine(response);
+                }
+                myHttpClient.Dispose();
+            }
+
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("CAUGHT EXCEPTION:");
+                System.Diagnostics.Debug.WriteLine(e);
             }
         }
     }
