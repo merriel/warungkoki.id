@@ -75,10 +75,11 @@
                                             VerticalOptions="StartAndExpand"
                                             FontAttributes="None"
                                             FontSize="10"
-                                            Text="{Binding alamat}"
+                                            Text="{Binding wilayah_name, StringFormat= 'Lokasi : {}'}"
                                             TextColor="OrangeRed"
                                             VerticalTextAlignment="Center" 
                                             Grid.Row="0" Grid.Column="1"/>
+                                    <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                     <Label
                                             VerticalOptions="StartAndExpand"
                                             FontAttributes="Bold"
@@ -88,7 +89,18 @@
                                             TextColor="Gray"
                                             MaxLines="2"
                                             VerticalTextAlignment="Center" 
-                                            Grid.Row="1" Grid.Column="1"/>
+                                            />
+                                        <Label
+                                            VerticalOptions="StartAndExpand"
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            Margin="0,0,20,0"
+                                            Text="{Binding name}"
+                                            TextColor="Gray"
+                                            MaxLines="2"
+                                            VerticalTextAlignment="Center" 
+                                            />
+                                    </StackLayout>
                                     <Label
                                             VerticalOptions="StartAndExpand"
                                             FontAttributes="Bold"

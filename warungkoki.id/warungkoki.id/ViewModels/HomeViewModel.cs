@@ -180,8 +180,6 @@ namespace warungkoki.id.ViewModels
                 {
                     string result = response.Substring(1);
                     var json = JsonConvert.DeserializeObject<List<Product>>(result);
-                    System.Diagnostics.Debug.WriteLine("HASIL:");
-                    System.Diagnostics.Debug.WriteLine(result);
                     ListProduct = new ObservableCollection<Product>();
 
                     foreach (Product item in json)
@@ -194,7 +192,8 @@ namespace warungkoki.id.ViewModels
                             banyaknya = item.banyaknya, desc = item.desc, min_qty = item.min_qty, max_qty = item.max_qty,
                             judul_promo = item.judul_promo, harga_act = item.harga_act, harga_crt= item.harga_crt, active = item.active, 
                             length = item.length,width = item.width, height= item.height, weight = item.weight,
-                            stock = item.stock, wilayah_name = "Barang ini tersedia dan bisa anda dapatkan di "+ item.wilayah_name, regency_name = item.regency_name,
+                            stock = item.stock, wilayah_name = "Barang ini tersedia dan bisa anda dapatkan di "+ item.wilayah_name,
+                            regency_name = item.regency_name,prod_name = item.prod_name,
                             prod_img = "http://elcapersada.com/warungkoki/android/img_post/" + item.prod_img, uuid = item.uuid, alamat = item.alamat});
                     }
                     myHttpClient.Dispose();
