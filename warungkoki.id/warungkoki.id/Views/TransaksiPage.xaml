@@ -36,41 +36,41 @@
                         <ViewCell >
                             <StackLayout>
                                 <Frame CornerRadius="10" Margin="10">
-                                    <Grid BackgroundColor="White">
+                                    <Grid BackgroundColor="White" Margin="0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="50"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="30"/>
-                                            <RowDefinition Height="25"/>
+                                            <RowDefinition Height="80"/>
+                                            <RowDefinition Height="20"/>
                                             <RowDefinition Height="50"/>
                                             <RowDefinition Height="25"/>
                                         </Grid.RowDefinitions>
                                         <StackLayout Grid.Row="0" Grid.RowSpan="3" VerticalOptions="Center" >
-                                            <Frame CornerRadius="60"  BackgroundColor="#57ba7d" Padding="10" >
+                                            <Frame CornerRadius="100"  BackgroundColor="{StaticResource Primary}" Padding="10" Margin="0,0,5,0" >
                                                 <Image 
                                         HeightRequest="25" WidthRequest="25" Aspect="AspectFit" 
 							            x:Name="image" VerticalOptions="Center"
-                                        Source="alamat.png" Margin="-5"/>
+                                        Source="basket.png" Margin="-5"/>
                                             </Frame>
                                         </StackLayout>
                                         <Label
                                             VerticalOptions="StartAndExpand"
                                             FontAttributes="Bold"
                                             FontSize="Small"
-                                            Text="{Binding judul}"
+                                            Text="{Binding name}"
                                             TextColor="Red"
                                             VerticalTextAlignment="Center" 
                                             Grid.Row="0" Grid.Column="1"/>
-                                        <Grid Grid.Row="1" Grid.Column="1">
+                                        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="0">
                                             <Label
                                             VerticalOptions="StartAndExpand"
                                             FontAttributes="Bold"
                                             FontSize="Micro"
                                             Grid.Column="0"    
-                                            Text="{Binding nama_user}"
+                                            Text="{Binding created_at}"
                                             TextColor="Black"
                                             VerticalTextAlignment="Center" 
                                             />
@@ -79,27 +79,39 @@
                                             FontAttributes="Bold"
                                             FontSize="Micro"
                                             Grid.Column="1"
-                                            Text="{Binding no_hp}"
+                                            Text="{Binding amount,StringFormat='Rp. {0:#,0}'}"
                                             TextColor="Black"
                                             VerticalTextAlignment="Center" 
                                             />
-                                        </Grid>
+                                        </StackLayout>
                                         <Label
                                             VerticalOptions="StartAndExpand"
                                             FontAttributes="None"
                                             FontSize="Micro"
-                                            Text="{Binding alamat}"
+                                            Text="{Binding total, StringFormat='Transaksi ini mengandung {} barang'}"
                                             TextColor="Black"
                                             VerticalTextAlignment="Center" 
                                             Grid.Row="2" Grid.Column="1"/>
-                                        <Label
+                                        <Grid Grid.Row="3">
+                                            <Frame BackgroundColor="#ff7b7b" CornerRadius="20" Grid.Column="0">
+                                                <Label
                                             VerticalOptions="StartAndExpand"
                                             FontAttributes="Italic"
                                             FontSize="Micro"
-                                            Text="Ini merupakan Alamat UTAMA Anda"
-                                            TextColor="Black"
-                                            VerticalTextAlignment="Center" HorizontalOptions="Center"
-                                            Grid.Row="3" Grid.ColumnSpan="2"/>
+                                            Text="KADALUARSA"
+                                            TextColor="Red"
+                                            VerticalTextAlignment="Center" HorizontalOptions="Center"/>
+                                            </Frame>
+                                            <Frame BackgroundColor="#b5cbde" CornerRadius="20" Grid.Column="1">
+                                                <Label
+                                            VerticalOptions="StartAndExpand"
+                                            FontAttributes="Italic"
+                                            FontSize="Micro"
+                                            Text="AMBIL DI LOKASI"
+                                            TextColor="#0b5394"
+                                            VerticalTextAlignment="Center" HorizontalOptions="Center"/>
+                                            </Frame>
+                                        </Grid>
                                     </Grid>
                                 </Frame>
                             </StackLayout>
