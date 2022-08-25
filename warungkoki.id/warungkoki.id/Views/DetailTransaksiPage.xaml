@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="warungkoki.id.Views.DetailTransaksiPage"
+              BackgroundColor="#fcf3e6">
+    <Shell.TitleView>
+        <Grid BackgroundColor="{StaticResource Primary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="email.png"
+                         HorizontalOptions="Start"
+                         HeightRequest="25"
+                         WidthRequest="25" BackgroundColor="Transparent" Grid.Column="0" />
+            <Image Source="titlebar.jpeg" Grid.Column="1"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="Center" Margin="0,10,10,10" />
+        </Grid>
+    </Shell.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="History Saldo Warungkoki" Order="Secondary" />
+        <ToolbarItem Text="Voucher Undian" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Frame CornerRadius="20" Grid.Row="0" BackgroundColor="#57ba7d" Margin="15,15,15,15" Padding="5">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="money_ic.png" Grid.RowSpan="2" Grid.Column="0" Margin="5"/>
+                        <Label Text="Saldoku:" TextColor="#ffeac2" FontFamily="OpenSansSemibold" Grid.Row="0" Grid.Column="1" FontSize="10" FontAttributes="Bold"/>
+                        <Label x:Name ="saldo_last" TextColor="#ffeac2" FontFamily="OpenSansSemibold" Grid.Row="1" Grid.Column="1" FontSize="10" FontAttributes="Bold"/>
+                        <Image Source="rice_ic.png" Grid.RowSpan="2" Grid.Column="2" Margin="5" />
+                        <Label Text="Butir Padi :" TextColor="#ffeac2" FontFamily="OpenSansSemibold" Grid.Row="0" Grid.Column="3" FontSize="10" FontAttributes="Bold"/>
+                        <Label Text="123" TextColor="#ffeac2" FontFamily="OpenSansSemibold" Grid.Row="1" Grid.Column="3" FontSize="10" FontAttributes="Bold"/>
+                        <Image Source="gift_ic.png" Grid.RowSpan="2" Grid.Column="4" Margin="5" />
+                        <Label Text="Hadiahku :" TextColor="#ffeac2" FontFamily="OpenSansSemibold" Grid.Row="0" Grid.Column="5" FontSize="10" FontAttributes="Bold"/>
+                        <Label Text="1" TextColor="#ffeac2" Grid.Row="1" FontFamily="OpenSansSemibold" Grid.Column="5" FontSize="10" FontAttributes="Bold"/>
+                    </Grid>
+                </Frame>
+                <Frame CornerRadius="20" Grid.Row="1" BackgroundColor="#ffff" Margin="15,0,15,15" Padding="5">
+                    <StackLayout Padding="20">
+                        <Label Text="My Profile" FontFamily="OpenSansSemibold" FontSize="25" FontAttributes="Bold"></Label>
+                        <Label Text="User Information" FontFamily="OpenSansSemibold" FontSize="10" FontAttributes="Bold"></Label>
+                        <Label Text="Full Name" FontFamily="OpenSans-Regular" FontSize="15" FontAttributes="Bold"></Label>
+                        <Entry Text="Name" x:Name="name"  FontFamily="OpenSans-Regular" FontSize="12"></Entry>
+                        <Label Text="Email" FontFamily="OpenSans-Regular"  FontSize="15" FontAttributes="Bold"></Label>
+                        <Entry Text="Email" x:Name="email" Keyboard="Email" FontFamily="OpenSans-Regular" FontSize="12"></Entry>
+                        <Label Text="Phone Number" FontFamily="OpenSans-Regular" FontSize="15" FontAttributes="Bold"></Label>
+                        <Entry Text="Phone Number" x:Name="phone" Keyboard="Numeric" FontFamily="OpenSans-Regular" FontSize="12"></Entry>
+                        <Label Text="NIK" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold" ></Label>
+                        <Entry Text="NIK" x:Name ="nik" Keyboard="Numeric" Placeholder="NIK" FontFamily="OpenSans-Regular" FontSize="12"/>
+                        <Label Text="PIN" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold"></Label>
+                        <Entry Text="PIN" x:Name="pin" IsPassword="True" FontFamily="OpenSans-Regular"  FontSize="12"/>
+                        <Grid>
+                            <Button Text="Update" Grid.Column="0" Clicked="Update_Clicked" CornerRadius="10"/>
+                            <Button Text="Logout" Grid.Column="1" Clicked="Logout_Clicked" CornerRadius="10"/>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

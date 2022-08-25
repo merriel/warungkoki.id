@@ -72,6 +72,7 @@ namespace warungkoki.id.Views
                 System.Diagnostics.Debug.WriteLine(e);
             }
         }
+
         public async Task get_detail(string id)
         {
             try

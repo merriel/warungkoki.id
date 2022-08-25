@@ -77,6 +77,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\KonfirmasiPopUpPage.xaml.cs">
+      <DependentUpon>KonfirmasiPopUpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DetailTransaksiPage.xaml.cs">
+      <DependentUpon>DetailTransaksiPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PromoPage.xaml.cs">
+      <DependentUpon>PromoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\FavPage.xaml.cs">
       <DependentUpon>FavPage.xaml</DependentUpon>
     </Compile>

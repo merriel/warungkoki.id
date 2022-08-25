@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:plugin="clr-namespace:Plugin.Badge.Abstractions;assembly=Plugin.Badge.Abstractions" 
+             x:Class="warungkoki.id.Views.PromoPage"
+             BackgroundColor="WhiteSmoke">
+
+    <Shell.TitleView>
+        <Grid BackgroundColor="{StaticResource Primary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="email.png"
+                         HorizontalOptions="Start"
+                         HeightRequest="25"
+                         plugin:TabBadge.BadgeText="3"
+                         WidthRequest="25" BackgroundColor="Transparent" Grid.Column="0" />
+            <Image Source="titlebar.jpeg" Grid.Column="1"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="Center" Margin="0,10,10,10" />
+        </Grid>
+        </Shell.TitleView>
+
+        <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Alamat" Order="Secondary" />
+        <ToolbarItem Text="History Saldo Warungkoki" Order="Secondary" />
+        <ToolbarItem Text="Voucher Undian" Order="Secondary" />
+        <ToolbarItem Text="Logout" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.5" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="80" />
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0">
+            <BoxView  BackgroundColor="#57ba7d" HeightRequest="2"/>
+            <Label Text="Keranjang Anda" FontSize="Title" FontFamily="OpenSans-Regular"
+               HorizontalOptions="StartAndExpand" TextColor="Gray" Margin="20,10,20,10" FontAttributes="None" />
+        </StackLayout>
+        <ListView   x:Name="listView" Grid.Row="1"
+                    HasUnevenRows="true" SeparatorVisibility="None" 
+                        Margin="10,20,10,10">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                        <StackLayout>
+                            <Frame CornerRadius="10" Margin="10">
+                                <Grid BackgroundColor="White">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="10"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ffimageloading:CachedImage 
+                                        HeightRequest="70" Aspect="AspectFill" 
+                                        DownsampleToViewSize = "true"
+							            x:Name="image" Grid.RowSpan="2" Grid.Row="0"
+                                        Source="{Binding img}" Margin="0"/>
+                                    <Label
+                                            VerticalOptions="StartAndExpand"
+                                            FontAttributes="None"
+                                            FontSize="10"
+                                            Text="{Binding wilayah_name, StringFormat= 'Lokasi : {}'}"
+                                            TextColor="OrangeRed"
+                                            VerticalTextAlignment="Center" 
+                                            Grid.Row="0" Grid.Column="1"/>
+                                    <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                                    <Label
+                                            VerticalOptions="StartAndExpand"
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            Margin="0,0,20,0"
+                                            Text="{Binding prod_name}"
+                                            TextColor="Gray"
+                                            MaxLines="2"
+                                            VerticalTextAlignment="Center" 
+                                            />
+                                        <Label
+                                            VerticalOptions="StartAndExpand"
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            Margin="0,0,20,0"
+                                            Text="{Binding name}"
+                                            TextColor="Gray"
+                                            MaxLines="2"
+                                            VerticalTextAlignment="Center" 
+                                            />
+                                    </StackLayout>
+                                    <Label
+                                            VerticalOptions="StartAndExpand"
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            Text="{Binding harga_act, StringFormat='Rp.{0:#,0}'}"
+                                            TextColor="OrangeRed"
+                                            VerticalTextAlignment="Center" 
+                                            Grid.Row="2" Grid.Column="1"/>
+
+                                    <Grid Grid.Column="1" Grid.Row="3" Margin="0,0,40,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="30"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button Text="-" FontAttributes="Bold" BackgroundColor="#57ba7d" Grid.Column="0" Padding="0"/>
+                                        <Entry Text="1" Keyboard="Numeric" FontSize="12" Grid.Column="1" Margin="0,0,0,-5"/>
+                                        <Button Text="+" FontAttributes="Bold" BackgroundColor="#57ba7d" Grid.Column="2" Padding="0"/>
+                                    </Grid>
+                                    <Button Text="X" BackgroundColor="Transparent" TextColor="Black" Grid.RowSpan="2" FontAttributes="Bold" Grid.Column="2"/>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+              
+            </ListView>
+
+        <BoxView CornerRadius="20" Grid.Row="2" Margin="20,0,20,0" BackgroundColor="LightGray"/>
+
+        <Frame CornerRadius="20" Grid.Row="3" Margin="20,10,20,10" Padding="5" BackgroundColor="White">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="discount.png" Grid.Column="0"/>
+                <Label Text="Cek ada promo menarik disini" Grid.Column="1" FontSize="10" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                <ImageButton Source="right_arrow.png" Grid.Column="2" Padding="10" BackgroundColor="Transparent"/>
+            </Grid>
+        </Frame>
+        <Frame CornerRadius="20" Grid.Row="4" Margin="20,0,20,0" Padding="5" BackgroundColor="White">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Entry Placeholder="Ada Kode Voucher?" Grid.Column="0" FontSize="10" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                <ImageButton Source="search.png" CornerRadius="10" Grid.Column="1" Margin="3" Padding="10" BackgroundColor="{StaticResource Primary}"/>
+            </Grid>
+        </Frame>
+        <Frame CornerRadius="20" Grid.Row="5" Margin="20,10,20,10" BackgroundColor="{StaticResource Primary}"> 
+            <Grid HorizontalOptions="CenterAndExpand" Margin="-10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "*"/>
+                    <ColumnDefinition Width = "30"/>
+                    <ColumnDefinition Width = "*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                <Label Text="Grand Total :" Grid.Row="0" Grid.Column="0"  TextColor="White" HorizontalOptions="Center" FontFamily="OpenSansSemibold" FontAttributes="Bold" FontSize="10" />
+                <Label Text="Rp. 123.000" Grid.Row="1" Grid.Column="0"  TextColor="White" FontFamily="OpenSansSemibold" FontAttributes="Bold" FontSize="15"/>
+                <Label Text="" Grid.Row="0" Grid.Column="1" Padding="5" />
+                <Button Text="Checkout" BackgroundColor="White" HeightRequest="35" Clicked="Button_Clicked" TextColor="Black" Margin="20,-5,0,5" CornerRadius="10" Padding="0" Grid.RowSpan="2" VerticalOptions="Center" Grid.Row="0" FontSize="10" FontAttributes="Bold" Grid.Column="2"/>
+            </Grid>
+        </Frame>
+    </Grid>
+</ContentPage>
