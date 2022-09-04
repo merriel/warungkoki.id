@@ -17,7 +17,7 @@ namespace warungkoki.id.Views
     public partial class DetailTransaksiPage : ContentPage
     {
         string id;
-        public DetailTransaksiPage()
+        public DetailTransaksiPage(TransaksiGrouping trx)
         {
             InitializeComponent();
             if (Application.Current.Properties["ID"] != null)

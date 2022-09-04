@@ -30,7 +30,7 @@
             
             <ListView   x:Name="listView" Grid.Row="1" IsVisible="False"
                     HasUnevenRows="true" SeparatorVisibility="None" 
-                        Margin="20">
+                        Margin="20" ItemSelected="listView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
@@ -43,9 +43,9 @@
                                         </Grid.ColumnDefinitions>
 
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="80"/>
+                                            <RowDefinition Height="60"/>
                                             <RowDefinition Height="20"/>
-                                            <RowDefinition Height="50"/>
+                                            <RowDefinition Height="30"/>
                                             <RowDefinition Height="25"/>
                                         </Grid.RowDefinitions>
                                         <StackLayout Grid.Row="0" Grid.RowSpan="3" VerticalOptions="Center" >
@@ -60,7 +60,7 @@
                                             VerticalOptions="StartAndExpand"
                                             FontAttributes="Bold"
                                             FontSize="Small"
-                                            Text="{Binding name}"
+                                            Text="{Binding names}"
                                             TextColor="Red"
                                             VerticalTextAlignment="Center" 
                                             Grid.Row="0" Grid.Column="1"/>
@@ -70,7 +70,7 @@
                                             FontAttributes="Bold"
                                             FontSize="Micro"
                                             Grid.Column="0"    
-                                            Text="{Binding created_at}"
+                                            Text="{Binding created_at, StringFormat= '{0} || '}"
                                             TextColor="Black"
                                             VerticalTextAlignment="Center" 
                                             />
@@ -88,26 +88,32 @@
                                             VerticalOptions="StartAndExpand"
                                             FontAttributes="None"
                                             FontSize="Micro"
-                                            Text="{Binding total, StringFormat='Transaksi ini mengandung {} barang'}"
+                                            Text="{Binding jumlah_item, StringFormat='Transaksi ini mengandung {0} barang'}"
                                             TextColor="Black"
                                             VerticalTextAlignment="Center" 
                                             Grid.Row="2" Grid.Column="1"/>
-                                        <Grid Grid.Row="3">
+                                        <Grid Grid.Row="3" Grid.Column="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="5*"/>
+                                                <ColumnDefinition Width="5*"/>
+                                            </Grid.ColumnDefinitions>
                                             <Frame BackgroundColor="#ff7b7b" CornerRadius="20" Grid.Column="0">
                                                 <Label
-                                            VerticalOptions="StartAndExpand"
+                                            VerticalOptions="Center"
                                             FontAttributes="Italic"
-                                            FontSize="Micro"
-                                            Text="KADALUARSA"
+                                            Margin="-10,-15,-10,0"
+                                            FontSize="10"
+                                            Text="{Binding status}"
                                             TextColor="Red"
                                             VerticalTextAlignment="Center" HorizontalOptions="Center"/>
                                             </Frame>
                                             <Frame BackgroundColor="#b5cbde" CornerRadius="20" Grid.Column="1">
                                                 <Label
-                                            VerticalOptions="StartAndExpand"
+                                            VerticalOptions="Center"
                                             FontAttributes="Italic"
-                                            FontSize="Micro"
-                                            Text="AMBIL DI LOKASI"
+                                            FontSize="10"
+                                            Margin="-10,-15,-10,0" 
+                                            Text="{Binding type_bayar}"
                                             TextColor="#0b5394"
                                             VerticalTextAlignment="Center" HorizontalOptions="Center"/>
                                             </Frame>

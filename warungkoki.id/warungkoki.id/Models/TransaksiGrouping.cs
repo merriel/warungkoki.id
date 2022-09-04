@@ -4,15 +4,14 @@ using System.Runtime.CompilerServices;
 
 namespace warungkoki.id.Models
 {
-    public class TransaksiDetail
+    public class TransaksiGrouping
     {
-        public string name{ get; set; }
-        public string product_name{ get; set; }
-
-        public string created_at{ get; set; }
-        public string amount { get; set; }
-        public string type_bayar { get; set; }
-        public string wilayah_name { get; set; }
+        public string names{ get; set; }
         
+        public string created_at{ get; set; }
+        public double amount { get; set; }
+        public string jumlah_item { get; set; }
+        public string status { get; set; }
+        public string type_bayar { get; set; }
     }
 }
