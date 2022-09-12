@@ -127,7 +127,7 @@
             </ListView>
             <StackLayout x:Name="emptyTransaksi"  Grid.Row="1" IsVisible="true" Margin="20">
                 <Frame CornerRadius="10" HeightRequest="40">
-                    <Label Text="Belum Ada Transaksi Pembelian apapun pada saat ini" FontAttributes="None" FontSize="Small" HorizontalOptions="Center"/>
+                    <Label x:Name="noted" FontAttributes="None" FontSize="Small" HorizontalOptions="Center"/>
                 </Frame>
             </StackLayout>
             

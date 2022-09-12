@@ -27,9 +27,10 @@ namespace warungkoki.id.Views
                 id = Application.Current.Properties["ID"].ToString();
                 get_transaksi(id);
             }
-           
+            noted.Text = "Belum Ada Transaksi Pembelian apapun pada saat ini";
         }
         string namesgroup;
+        string wilayah;
         double amountsgroup;
         public async Task get_transaksi(string id)
         {
@@ -57,8 +58,10 @@ namespace warungkoki.id.Views
                         });
                         await get_detail(item.id, item.type_bayar, item.created_at, item.status);
                         datagroup.Add( new TransaksiGrouping {names = namesgroup, created_at = item.created_at, amount = amountsgroup,
-                                        jumlah_item = datadetail.Count().ToString(), status = item.status, type_bayar = item.type_bayar});
+                                        jumlah_item = datadetail.Count().ToString(), status = item.status, type_bayar = item.type_bayar, 
+                                        wilayah_name = wilayah, data_detail = datadetail });
                         namesgroup = "";
+                        wilayah = "";
                         amountsgroup = 0;
                         datadetail = new ObservableCollection<TransaksiDetail>();
                     }
@@ -105,12 +108,13 @@ namespace warungkoki.id.Views
                         datadetail.Add(new TransaksiDetail
                         {
                             name = item.name,
-                            product_name = item.product_name,
-                            created_at = item.created_at,
+                            product_name = item.product_name + " " + item.name,
+                        created_at = item.created_at,
                             amount= item.amount,
                             wilayah_name= item.wilayah_name
                         });
                         namesgroup = item.product_name +" "+ item.name + ", ";
+                        wilayah = item.wilayah_name;
                         if (item.amount != null)
                         {
                             amountsgroup = +double.Parse(item.amount);

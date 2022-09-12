@@ -23,55 +23,62 @@
         <ToolbarItem Text="Voucher Undian" Order="Secondary" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ScrollView>
-            <Grid >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="90"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Frame CornerRadius="20" Grid.Row="0" BackgroundColor="#57ba7d" Margin="15,15,15,15" Padding="5">
-                    <Grid >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="70"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="money_ic.png" Grid.RowSpan="2" Grid.Column="0" Margin="5"/>
-                        <Label Text="Saldoku:" TextColor="#ffeac2" FontFamily="OpenSansSemibold" Grid.Row="0" Grid.Column="1" FontSize="10" FontAttributes="Bold"/>
-                        <Label x:Name ="saldo_last" TextColor="#ffeac2" FontFamily="OpenSansSemibold" Grid.Row="1" Grid.Column="1" FontSize="10" FontAttributes="Bold"/>
-                        <Image Source="rice_ic.png" Grid.RowSpan="2" Grid.Column="2" Margin="5" />
-                        <Label Text="Butir Padi :" TextColor="#ffeac2" FontFamily="OpenSansSemibold" Grid.Row="0" Grid.Column="3" FontSize="10" FontAttributes="Bold"/>
-                        <Label Text="123" TextColor="#ffeac2" FontFamily="OpenSansSemibold" Grid.Row="1" Grid.Column="3" FontSize="10" FontAttributes="Bold"/>
-                        <Image Source="gift_ic.png" Grid.RowSpan="2" Grid.Column="4" Margin="5" />
-                        <Label Text="Hadiahku :" TextColor="#ffeac2" FontFamily="OpenSansSemibold" Grid.Row="0" Grid.Column="5" FontSize="10" FontAttributes="Bold"/>
-                        <Label Text="1" TextColor="#ffeac2" Grid.Row="1" FontFamily="OpenSansSemibold" Grid.Column="5" FontSize="10" FontAttributes="Bold"/>
-                    </Grid>
-                </Frame>
-                <Frame CornerRadius="20" Grid.Row="1" BackgroundColor="#ffff" Margin="15,0,15,15" Padding="5">
-                    <StackLayout Padding="20">
-                        <Label Text="My Profile" FontFamily="OpenSansSemibold" FontSize="25" FontAttributes="Bold"></Label>
-                        <Label Text="User Information" FontFamily="OpenSansSemibold" FontSize="10" FontAttributes="Bold"></Label>
-                        <Label Text="Full Name" FontFamily="OpenSans-Regular" FontSize="15" FontAttributes="Bold"></Label>
-                        <Entry Text="Name" x:Name="name"  FontFamily="OpenSans-Regular" FontSize="12"></Entry>
-                        <Label Text="Email" FontFamily="OpenSans-Regular"  FontSize="15" FontAttributes="Bold"></Label>
-                        <Entry Text="Email" x:Name="email" Keyboard="Email" FontFamily="OpenSans-Regular" FontSize="12"></Entry>
-                        <Label Text="Phone Number" FontFamily="OpenSans-Regular" FontSize="15" FontAttributes="Bold"></Label>
-                        <Entry Text="Phone Number" x:Name="phone" Keyboard="Numeric" FontFamily="OpenSans-Regular" FontSize="12"></Entry>
-                        <Label Text="NIK" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold" ></Label>
-                        <Entry Text="NIK" x:Name ="nik" Keyboard="Numeric" Placeholder="NIK" FontFamily="OpenSans-Regular" FontSize="12"/>
-                        <Label Text="PIN" FontFamily="OpenSansSemibold" FontSize="15" FontAttributes="Bold"></Label>
-                        <Entry Text="PIN" x:Name="pin" IsPassword="True" FontFamily="OpenSans-Regular"  FontSize="12"/>
-                        <Grid>
-                            <Button Text="Update" Grid.Column="0" Clicked="Update_Clicked" CornerRadius="10"/>
-                            <Button Text="Logout" Grid.Column="1" Clicked="Logout_Clicked" CornerRadius="10"/>
-                        </Grid>
-                    </StackLayout>
-                </Frame>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="Rincian Transaksi Pembelian"
+                HorizontalOptions="CenterAndExpand" Margin="20,50,20,0" FontSize="Large" FontAttributes="None" Grid.Row="0"/>
+            <Frame CornerRadius="20" Grid.Row="1" BackgroundColor="#ffff" Margin="15,0,15,15" Padding="5">
+                <StackLayout Padding="20">
+                    <Label Text="Status :" FontFamily="OpenSansSemibold" FontSize="12" FontAttributes="Bold"></Label>
+                    <Label x:Name="status" FontFamily="OpenSans-Regular" TextColor="Red" FontSize="14" FontAttributes="Bold"></Label>
+                    <BoxView CornerRadius="20"  HeightRequest="0.5" Margin="0,0,0,0" BackgroundColor="LightGray"/>
+                    <Label Text="Tanggal Pembelian :"  FontFamily="OpenSansSemibold" FontSize="12" FontAttributes="Bold"></Label>
+                    <Label x:Name="tgl_beli" FontFamily="OpenSans-Regular"  FontSize="13" FontAttributes="Bold"></Label>
+                    <BoxView CornerRadius="20"  HeightRequest="0.5" Margin="0,0,0,0" BackgroundColor="LightGray"/>
+                    <Label Text="Toko :" FontFamily="OpenSansSemibold" FontSize="12" FontAttributes="Bold"/>
+                    <Label x:Name="wil" FontFamily="OpenSans-Regular" FontSize="13" FontAttributes="Bold"></Label>
+                    <BoxView CornerRadius="20"  HeightRequest="0.5" Margin="0,0,0,0" BackgroundColor="LightGray"/>
+                    <Label Text="Pembayaran melalui :" FontFamily="OpenSansSemiBold" FontSize="12" FontAttributes="Bold"/>
+                    <Label x:Name ="type_bayar" FontFamily="OpenSansSemibold" FontSize="13" FontAttributes="Bold" ></Label>
+                    <BoxView CornerRadius="20"  HeightRequest="0.5" Margin="0,0,0,0" BackgroundColor="LightGray"/>
+                    <Label Text="Produk yang dibeli :" x:Name ="nik" FontFamily="OpenSans-Regular" FontSize="12"/>
 
-            </Grid>
-        </ScrollView>
+                    <ListView   x:Name="listView" IsVisible="False" SeparatorColor="White"
+                    HasUnevenRows="true" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell >
+                                    <Frame CornerRadius="10" BackgroundColor="WhiteSmoke">
+                                            <Grid Margin="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="80"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding product_name}" Grid.Column="0"/>
+                                                <Label Text="{Binding amount,StringFormat='Rp. {0:#,0}'}" Grid.Column="1"/>
+                                            </Grid>
+                                        </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <Frame CornerRadius="20" BackgroundColor="{StaticResource Primary}" HeightRequest="100">
+                        <Grid Margin="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="TOTAL" FontAttributes="Bold" TextColor="White" Grid.Column="0"/>
+                            <Label x:Name="total" Grid.Column="1" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="End"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
